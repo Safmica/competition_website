@@ -23,7 +23,7 @@ func CreateCompetition(c *fiber.Ctx) error {
 		})  
 	}  
   
-	competition.ID = uuid.New().String()
+	competition.ID = uuid.New()
 
 	if competition.Deadline.IsZero() {  
 		competition.Deadline = time.Now()  
