@@ -4,9 +4,15 @@ import (
 	"back-end-competition/database"
 	"back-end-competition/models"
 	"back-end-competition/utils"
+	"errors"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/google/uuid"
+	"gopkg.in/gomail.v2"
 )
 
 func CreateRegistration(c *fiber.Ctx) error {
@@ -220,4 +226,127 @@ func DeleteRegistration(c *fiber.Ctx) error {
 	}
 
 	return c.SendStatus(fiber.StatusNoContent)
+}
+
+func GetAllRegistrer(c *fiber.Ctx) error {
+	registers := []models.RegistrationResponse{}
+	if err := database.DB.Preload("Competition").Find(&registers).Error; err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message":"Internal server error",
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"registers":registers,
+	})
+}
+
+
+func ApprovedPayment(c *fiber.Ctx) error {
+	registrationID := c.Params("id")
+	registration := models.Registration{}
+	paymentStatus := models.RegistrationAction{}
+	leader := models.User{}
+	if err := c.BodyParser(&paymentStatus); err != nil {  
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{  
+			"error": "Wrong field",  
+		})  
+	}  
+
+	if err := database.DB.Where("id = ?",registrationID).First(&registration).Error; err != nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"message": "registrations not found",
+		})
+	}
+
+	if paymentStatus.PaymentStatus == "rejected" {
+		registration.PaymentStatus = "rejected"
+		htmlBody, err := GenerateHTMLBodyFromTemplate("./assets/rejected.html", registration.TeamName)
+		if err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"message": "Failed to send email",
+			})
+		}
+		if err := database.DB.Where("id = ?",registration.LeaderID).First(&leader).Error; err != nil {
+			return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+				"message": "leader not found",
+			})
+		}
+		SendNotification(leader.Email,"Invalid Payment Proof", htmlBody, "")
+	} else if paymentStatus.PaymentStatus == "approved" {
+		registration.PaymentStatus = "approved"
+		htmlBody, err := GenerateHTMLBodyFromTemplate("./assets/approved.html", registration.TeamName)
+		if err != nil {
+			return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+				"message": "Failed to send email",
+			})
+		}
+		if err := database.DB.Where("id = ?",registration.LeaderID).First(&leader).Error; err != nil {
+			return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+				"message": "leader not found",
+			})
+		}
+		SendNotification(leader.Email,"Payment Approved", htmlBody, "")
+	} else {
+		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{  
+			"error": "Wrong field",  
+		})  
+	}
+
+	if err := database.DB.Save(&registration).Error; err!=nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message": "Failed to save registration",
+		})
+	}
+
+	return c.Status(fiber.StatusCreated).JSON(fiber.Map{
+		"registration": registration,
+	})
+}
+
+func SendNotification(to string, subject string, htmlBody string, attachmentPath string) error {
+	smtpServer := os.Getenv("SMTP_SERVER")
+	smtpPort := os.Getenv("SMTP_PORT")
+	smtpEmail := os.Getenv("SMTP_EMAIL")
+	smtpPassword := os.Getenv("SMTP_PASSWORD")
+
+	if smtpServer == "" || smtpPort == "" || smtpEmail == "" || smtpPassword == "" {
+		return errors.New("SMTP environment variables are not set correctly")
+	}
+
+	port, err := strconv.Atoi(smtpPort)
+	if err != nil {
+		fmt.Println("Invalid SMTP port:", err)
+		return err
+	}
+
+	m := gomail.NewMessage()
+	m.SetHeader("From", smtpEmail)
+	m.SetHeader("To", to)
+	m.SetHeader("Subject", subject)
+	m.SetBody("text/html", htmlBody)
+	if attachmentPath != "" {
+		m.Attach(attachmentPath)
+	}
+
+	d := gomail.NewDialer(smtpServer, port, smtpEmail, smtpPassword)
+
+	if err := d.DialAndSend(m); err != nil {
+		fmt.Println("Failed to send email:", err)
+	}
+
+	return nil
+}
+
+func GenerateHTMLBodyFromTemplate(file string, participantName string) (string, error) {
+	fileContent, err := os.ReadFile(file)
+	if err != nil {
+		return "", fmt.Errorf("failed to read HTML file: %w", err)
+	}
+
+	htmlBody := string(fileContent)
+
+	htmlBody = strings.Replace(htmlBody, "[Team]", participantName, -1)
+
+	return htmlBody, nil
 }

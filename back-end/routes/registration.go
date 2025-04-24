@@ -12,4 +12,6 @@ func RegistrationRoutes(app *fiber.App) {
 	app.Patch("/registration/:id", middlewares.Auth(), controllers.UpdateRegistration)
 	app.Get("/registration", middlewares.Auth(), controllers.GetRegistration)
 	app.Patch("/registration/:id", middlewares.Auth(), controllers.DeleteRegistration)
+	app.Patch("/registration/payment/:id", middlewares.AuthAdmin(), controllers.ApprovedPayment)
+	app.Get("/registration/registered", middlewares.AuthAdmin(), controllers.GetAllRegistrer)
 }
