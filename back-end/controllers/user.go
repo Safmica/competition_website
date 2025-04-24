@@ -8,6 +8,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt"
+	"github.com/google/uuid"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -43,6 +44,7 @@ func Signup(c *fiber.Ctx) error {
 		})
 	}
 
+	user.ID = uuid.New()
 	user.Name = name
 	user.Email = email
 	user.Password = string(hashedPassword)
@@ -107,5 +109,18 @@ func Login(c *fiber.Ctx) error {
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"user":  user,
 		"token": signedToken,
+	})
+}
+
+func GetAllUser(c fiber.Ctx) error {
+	users := []models.User{}
+	if err := database.DB.Find(&users); err != nil {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"message":"Internal server error",
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"users":users,
 	})
 }
