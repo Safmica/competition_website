@@ -114,7 +114,15 @@ func GetRegistration(c *fiber.Ctx) error {
 }
 
 func UpdateRegistration(c *fiber.Ctx) error {
+	registrationID := c.Params("id")
 	registration := models.Registration{}
+
+	if err := database.DB.Where("registration_id = ?",registrationID).First(&registration); err != nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"message": "registrations not found",
+		})
+	}
+
 
 	teamName := c.FormValue("team_name")
 	leaderID := c.FormValue("leader_id")
