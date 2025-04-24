@@ -102,7 +102,7 @@ func GetRegistration(c *fiber.Ctx) error {
 	userID := c.Locals("user_id")
 	registrations := []models.Registration{}
 
-	if err := database.DB.Preload("CompetitionID").Where("leader_id = ? OR member1_id = ? OR member2_id = ?", userID, userID, userID).Find(&registrations).Error; err != nil {
+	if err := database.DB.Preload("Competition").Where("leader_id = ? OR member1_id = ? OR member2_id = ?", userID, userID, userID).Find(&registrations).Error; err != nil {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
 			"message": "registrations not found",
 		})

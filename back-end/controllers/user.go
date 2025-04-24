@@ -61,11 +61,10 @@ func Signup(c *fiber.Ctx) error {
 }
 
 func Login(c *fiber.Ctx) error {
-	name := c.FormValue("name")
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 
-	if name == "" || password == "" || email == ""{
+	if password == "" || email == ""{
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "Username and password are required",
 		})
@@ -114,7 +113,7 @@ func Login(c *fiber.Ctx) error {
 
 func GetAllUser(c *fiber.Ctx) error {
 	users := []models.UserResponse{}
-	if err := database.DB.Find(&users).Error; err != nil {
+	if err := database.DB.Where("role != ?", "admin").Find(&users).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message":"Internal server error",
 		})
