@@ -39,14 +39,14 @@ function LoginPage() {
 
 const styles = {
   container: {
-    maxWidth: '400px',
-    maxHeight: '',
-    margin: '100px auto',
-    padding: '110px',
+    Width: '400px',
+    Height: '1000px',
+    padding: '150px',
     border: '1px solid #ddd',
     borderRadius: '10px',
-    boxShadow: '0 0 10px rgba(0,0,0,0.1)',
+    boxShadow: '0 0 10px rgba(31, 30, 30, 0.1)',
     textAlign: 'center',
+    backgroundColor: 'black',
   },
   title: {
     marginTop: '-120px',
@@ -55,10 +55,13 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     gap: '15px',
+    Height:'100px'
+
   },
   input: {
     padding: '10px',
     fontSize: '16px',
+    
   },
   button: {
     padding: '10px',
