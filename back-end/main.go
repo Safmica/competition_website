@@ -2,6 +2,7 @@ package main
 
 import (
 	"back-end-competition/config"
+	"back-end-competition/database"
 	"back-end-competition/routes"
 	"os"
 
@@ -11,6 +12,8 @@ import (
 
 func main() {
 	config.ENVInit()
+	database.DBInit()
+	database.DBMigration()
 	app := fiber.New()
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*", 
