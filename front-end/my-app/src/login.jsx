@@ -39,39 +39,39 @@ function LoginPage() {
 
 const styles = {
   container: {
-    Width: '400px',
-    Height: '1000px',
-    padding: '150px',
-    border: '1px solid #ddd',
-    borderRadius: '10px',
-    boxShadow: '0 0 10px rgba(31, 30, 30, 0.1)',
-    textAlign: 'center',
-    backgroundColor: 'black',
+    Width: "400px",
+    Height: "1000px",
+    padding: "150px",
+    border: "1px solid #ddd",
+    borderRadius: "10px",
+    boxShadow: "0 0 10px rgba(31, 30, 30, 0.1)",
+    textAlign: "center",
+    backgroundColor: "black",
+    color: "red",
   },
   title: {
-    marginTop: '-120px',
+    marginTop: "-120px",
+    fontSize: "100px",
   },
   form: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '15px',
-    Height:'100px'
-
+    display: "flex",
+    flexDirection: "column",
+    gap: "15px",
+    Height: "100px",
   },
   input: {
-    padding: '10px',
-    fontSize: '16px',
-    
+    padding: "10px",
+    fontSize: "16px",
   },
   button: {
-    padding: '10px',
-    fontSize: '16px',
-    backgroundColor: '#007bff',
-    color: 'white',
-    border: 'none',
-    borderRadius: '5px',
-    cursor: 'pointer',
-  }
+    padding: "10px",
+    fontSize: "16px",
+    backgroundColor: "#007bff",
+    color: "white",
+    border: "none",
+    borderRadius: "5px",
+    cursor: "pointer",
+  },
 };
 
 export default LoginPage;
