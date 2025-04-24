@@ -6,6 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	jwtware "github.com/gofiber/jwt/v3"
 	jwt "github.com/golang-jwt/jwt/v4"
+	"github.com/google/uuid"
 )
 
 func Auth() fiber.Handler {
@@ -16,8 +17,14 @@ func Auth() fiber.Handler {
 			user := c.Locals("user").(*jwt.Token)
 			claims := user.Claims.(jwt.MapClaims)
 
-			if uid, ok := claims["user_id"].(float64); ok {
-				c.Locals("user_id", uint(uid))
+			if uidStr, ok := claims["user_id"].(string); ok {
+				uid, err := uuid.Parse(uidStr)
+				if err != nil {
+					return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+						"message": "Invalid user ID",
+					})
+				}
+				c.Locals("user_id", uid)
 			}
 
 			return c.Next()
@@ -38,8 +45,14 @@ func AuthAdmin() fiber.Handler {
 			user := c.Locals("user").(*jwt.Token)
 			claims := user.Claims.(jwt.MapClaims)
 
-			if uid, ok := claims["user_id"].(float64); ok {
-				c.Locals("user_id", uint(uid))
+			if uidStr, ok := claims["user_id"].(string); ok {
+				uid, err := uuid.Parse(uidStr)
+				if err != nil {
+					return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
+						"message": "Invalid user ID",
+					})
+				}
+				c.Locals("user_id", uid)
 			}
 
 			if role, ok := claims["role"].(string); ok && role == "admin" {

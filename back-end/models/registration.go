@@ -14,6 +14,7 @@ type Registration struct {
 	Member1ID     uuid.UUID      `gorm:"type:char(36);column:member1_id" json:"member1_id"`
 	Member2ID     uuid.UUID      `gorm:"type:char(36);column:member2_id" json:"member2_id"`
 	CompetitionID uuid.UUID      `gorm:"type:char(36);column:competition_id" json:"competition_id"`
+	Competition   Competition    `gorm:"foreignKey:CompetitionID"`
 	PaymentProff  string         `gorm:"type:varchar(255)" json:"payment_proof"`
 	PaymentStatus bool           `gorm:"type:boolean;default:false" json:"payment_status"`
 	CreatedAt     time.Time      `json:"-" gorm:"autoCreateTime"`

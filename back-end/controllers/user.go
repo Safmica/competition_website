@@ -112,9 +112,9 @@ func Login(c *fiber.Ctx) error {
 	})
 }
 
-func GetAllUser(c fiber.Ctx) error {
-	users := []models.User{}
-	if err := database.DB.Find(&users); err != nil {
+func GetAllUser(c *fiber.Ctx) error {
+	users := []models.UserResponse{}
+	if err := database.DB.Find(&users).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message":"Internal server error",
 		})

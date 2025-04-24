@@ -17,3 +17,12 @@ type User struct {
 	UpdatedAt time.Time      `json:"-" gorm:"autoUpdateTime"`
 	DeletedAt gorm.DeletedAt `json:"-" gorm:"index"`
 }
+
+type UserResponse struct {
+	ID   uuid.UUID `gorm:"type:char(36);primaryKey" json:"id"`
+	Name string    `gorm:"type:varchar(255)" json:"name"`
+}
+
+func (UserResponse) TableName() string {
+	return "users"
+}
