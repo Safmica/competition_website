@@ -11,7 +11,7 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func Register(c *fiber.Ctx) error {
+func Signup(c *fiber.Ctx) error {
 	user := models.User{}
 	name := c.FormValue("name")
 	email := c.FormValue("email")
@@ -24,7 +24,7 @@ func Register(c *fiber.Ctx) error {
 	}
 
 	var exists bool
-	if err := database.DB.Model(&models.User{}).Where("username = ?", username).Select("count(*) > 0").Scan(&exists).Error; err != nil {
+	if err := database.DB.Model(&models.User{}).Where("email = ?", email).Select("count(*) > 0").Scan(&exists).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
 			"message": "Database error",
 		})
@@ -32,7 +32,7 @@ func Register(c *fiber.Ctx) error {
 
 	if exists {
 		return c.Status(fiber.StatusConflict).JSON(fiber.Map{
-			"message": "Username already exists",
+			"message": "Email already used",
 		})
 	}
 
@@ -43,7 +43,8 @@ func Register(c *fiber.Ctx) error {
 		})
 	}
 
-	user.Username = username
+	user.Name = name
+	user.Email = email
 	user.Password = string(hashedPassword)
 	if err := database.DB.Create(&user).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
@@ -58,17 +59,18 @@ func Register(c *fiber.Ctx) error {
 }
 
 func Login(c *fiber.Ctx) error {
-	username := c.FormValue("username")
+	name := c.FormValue("name")
+	email := c.FormValue("email")
 	password := c.FormValue("password")
 
-	if username == "" || password == "" {
+	if name == "" || password == "" || email == ""{
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "Username and password are required",
 		})
 	}
 
 	user := models.User{}
-	if err := database.DB.Where("username = ?", username).First(&user).Error; err != nil {
+	if err := database.DB.Where("email = ?", email).First(&user).Error; err != nil {
 		return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
 			"message": "Invalid credentials",
 		})
