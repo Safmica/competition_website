@@ -9,6 +9,8 @@ import (
 func DBMigration() {
 	err := DB.AutoMigrate(
 		&models.User{},
+		&models.Competition{},
+		&models.Registration{},
 	)
 
 	if err != nil {
