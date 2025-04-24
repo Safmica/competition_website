@@ -39,21 +39,24 @@ function LoginForm (){
 
 const styles = {
   container: {
-    Width: "400px",
-    Height: "1000px",
-    padding: "150px",
+    width: "400px",
+    height: "400px",
+    padding: "40px",
     border: "1px solid #ddd",
     borderRadius: "10px",
-    boxShadow: "0 0 10px rgba(31, 30, 30, 0.1)",
+    boxShadow: "0 0 15px rgba(31, 30, 30, 0.1)",
     textAlign: "center",
-    backgroundColor: "black",
-    color: "red",
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
   },
   title: {
-    marginTop: "-120px",
-    fontSize: "100px",
+    marginBottom: "-120px",
+    fontSize: "50px",
   },
   form: {
+    marginTop: "150px",
     display: "flex",
     flexDirection: "column",
     gap: "15px",
