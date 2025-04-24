@@ -1,7 +1,21 @@
 package main
 
-import "back-end-competition/config"
+import (
+	"back-end-competition/config"
+	"os"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
+)
 
 func main() {
 	config.ENVInit()
+	app := fiber.New()
+	app.Use(cors.New(cors.Config{
+		AllowOrigins: "*", 
+		AllowHeaders: "Origin, Content-Type, Accept",
+	}))
+
+	port := os.Getenv("SERVER_PORT")
+	app.Listen(":"+port)
 }
