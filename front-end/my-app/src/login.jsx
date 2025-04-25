@@ -15,7 +15,9 @@ function LoginForm (){
 
   return (
     <div style={styles.container}>
-      <h2 style={styles.title}>Login</h2>
+      <h2 style={styles.title}>
+        <b style={styles.grad}>Welcome back,</b> we're so exicted to see you
+      </h2>
       <form onSubmit={handleLogin} style={styles.form}>
         <input
           type="email"
@@ -35,12 +37,14 @@ function LoginForm (){
         />
 
         <div className="mb-3">
-            <Link className="text-primary" to="/register">
-             Don't have an account? Sign Up
-            </Link>
+          <Link className="text-primary" to="/register">
+            Don't have an account? Sign Up
+          </Link>
         </div>
 
-        <button type="submit" style={styles.button}>Login</button>
+        <button type="submit" style={styles.button}>
+          Login
+        </button>
       </form>
     </div>
   );
@@ -51,18 +55,28 @@ const styles = {
     width: "400px",
     height: "400px",
     padding: "40px",
-    border: "1px solid #ddd",
-    borderRadius: "10px",
+    border: '5px solid transparent',
+    borderImage: 'linear-gradient(to right, #A951FF, #FD4F53) 1',
+    borderRadius: '28px', 
     boxShadow: "0 0 15px rgba(31, 30, 30, 0.1)",
     textAlign: "center",
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    backgroundColor: "black",
   },
+  grad: {
+    background: "linear-gradient(to right, #FD4F53, #A951FF)",
+    WebkitBackgroundClip: "text",
+    WebkitTextFillColor: "transparent",
+    fontWeight: "bold",
+  },
+  
   title: {
     marginBottom: "-120px",
-    fontSize: "50px",
+    fontSize: "30px",
+    color: "w"
   },
   form: {
     marginTop: "150px",
