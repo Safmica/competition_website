@@ -57,7 +57,7 @@ const styles = {
     padding: "40px",
     border: '5px solid transparent',
     borderImage: 'linear-gradient(to right, #A951FF, #FD4F53) 1',
-    borderRadius: '28px', 
+    borderRadius: "28px",
     boxShadow: "0 0 15px rgba(31, 30, 30, 0.1)",
     textAlign: "center",
     position: "absolute",
@@ -65,6 +65,7 @@ const styles = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     backgroundColor: "black",
+    color:"white",
   },
   grad: {
     background: "linear-gradient(to right, #FD4F53, #A951FF)",
