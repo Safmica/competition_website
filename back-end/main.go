@@ -2,6 +2,8 @@ package main
 
 import (
 	"back-end-competition/config"
+	"back-end-competition/database"
+	"back-end-competition/routes"
 	"os"
 
 	"github.com/gofiber/fiber/v2"
@@ -10,11 +12,15 @@ import (
 
 func main() {
 	config.ENVInit()
+	database.DBInit()
+	database.DBMigration()
 	app := fiber.New()
 	app.Use(cors.New(cors.Config{
 		AllowOrigins: "*", 
 		AllowHeaders: "Origin, Content-Type, Accept",
 	}))
+
+	routes.SetupRoutes(app)
 
 	port := os.Getenv("SERVER_PORT")
 	app.Listen(":"+port)
