@@ -5,12 +5,13 @@ import App from "./App";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import RegisterForm from "./register.jsx";
+import LoginForm from "./login.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      <RegisterForm />
-      {/* <App /> */}
+      {/* <LoginForm /> */}
+      <App />
     </BrowserRouter>
   </React.StrictMode>
 );

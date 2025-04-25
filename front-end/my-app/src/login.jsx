@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 function LoginForm (){
   const [email, setEmail] = useState('');
@@ -31,6 +33,13 @@ function LoginForm (){
           style={styles.input}
           required
         />
+
+        <div className="mb-3">
+            <Link className="text-primary" to="/register">
+             Don't have an account? Sign Up
+            </Link>
+        </div>
+
         <button type="submit" style={styles.button}>Login</button>
       </form>
     </div>
@@ -77,4 +86,4 @@ const styles = {
   },
 };
 
-export default LoginForm
+export default LoginForm;
