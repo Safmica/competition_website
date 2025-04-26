@@ -1,53 +1,76 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-
-function LoginForm (){
+function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Sementara: hanya console.log data input
     console.log('Email:', email);
     console.log('Password:', password);
   };
 
   return (
-    <div style={styles.container}>
-      <h2 style={styles.title}>Login</h2>
-      <form onSubmit={handleLogin} style={styles.form}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={styles.input}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={styles.input}
-          required
-        />
-
-        <div className="mb-3">
+    <div style={styles.wrapper}>
+    <div style={styles.background}></div>
+      <div style={styles.container}>
+        <h2 style={styles.title}>Login</h2>
+        <form onSubmit={handleLogin} style={styles.form}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            style={styles.input}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={styles.input}
+            required
+          />
+          <div className="mb-3">
             <Link className="text-primary" to="/register">
-             Don't have an account? Sign Up
+              Don't have an account? Sign Up
             </Link>
-        </div>
-
-        <button type="submit" style={styles.button}>Login</button>
-      </form>
+          </div>
+          <button type="submit" style={styles.button}>Login</button>
+        </form>
+      </div>
     </div>
   );
 }
 
+// Gaya tampilan
 const styles = {
+
+  wrapper: {
+    position: "relative",
+    width: "100vw",
+    height: "100vh",
+    overflow: "hidden",
+  },
+
+  background: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    height: '100vw',
+    width: '100vh',
+    backgroundImage: 'url("/BG PAGE.png")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    transform: "translate(-50%, -50%) rotate(90deg)",
+    zindex: 0,
+
+  },
   container: {
+    zIndex: 1,
     width: "400px",
     height: "400px",
     padding: "40px",
@@ -59,22 +82,26 @@ const styles = {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+    backgroundColor: "rgba(255, 255, 255, 0.95)",
   },
+
   title: {
     marginBottom: "-120px",
     fontSize: "50px",
   },
+
   form: {
     marginTop: "150px",
     display: "flex",
     flexDirection: "column",
     gap: "15px",
-    Height: "100px",
   },
+
   input: {
     padding: "10px",
     fontSize: "16px",
   },
+  
   button: {
     padding: "10px",
     fontSize: "16px",
