@@ -124,3 +124,16 @@ func GetAllUser(c *fiber.Ctx) error {
 		"users":users,
 	})
 }
+
+func Logout(c *fiber.Ctx) error {
+	c.Cookie(&fiber.Cookie{
+		Name: "token",
+		Value: "",
+		Expires: time.Now().Add(-time.Hour),
+		HTTPOnly: true,\
+	})
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "Logout Success",
+	})
+}

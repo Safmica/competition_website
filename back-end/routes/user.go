@@ -10,5 +10,6 @@ import (
 func UserRoutes(app *fiber.App) {
 	app.Post("/signup", controllers.Signup)
 	app.Post("/login", controllers.Login)
+	app.Post("/logout", controllers.Logout)
 	app.Get("/user", middlewares.Auth(), controllers.GetAllUser)
 }
