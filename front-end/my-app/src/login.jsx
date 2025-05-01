@@ -14,35 +14,70 @@ function LoginForm() {
 
   return (
     <div style={styles.wrapper}>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-transparent" style={{ zIndex: 2, position: 'absolute', width: '100%' }}>
+      <nav
+        className="navbar navbar-expand-lg navbar-dark bg-transparent"
+        style={{ zIndex: 2, position: "absolute", width: "100%" }}
+      >
         <div className="container-fluid px-5">
-          <Link className="navbar-brand" to="/home" style={{ fontWeight: 'bold' }}>
+          <Link
+            className="navbar-brand"
+            to="/home"
+            style={{ fontWeight: "bold" }}
+          >
             KESEDZ
           </Link>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav mx-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/home">Home</Link>
+                <Link className="nav-link" to="/home">
+                  Home
+                </Link>
               </li>
               <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#!" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a
+                  className="nav-link dropdown-toggle"
+                  href="#!"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
                   Competition
                 </a>
                 <ul className="dropdown-menu">
-                  <li><Link className="dropdown-item" to="/competition1">Competition 1</Link></li>
-                  <li><Link className="dropdown-item" to="/competition2">Competition 2</Link></li>
+                  <li>
+                    <Link className="dropdown-item" to="/competition1">
+                      Competition 1
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/competition2">
+                      Competition 2
+                    </Link>
+                  </li>
                 </ul>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/about">About Us</Link>
+                <Link className="nav-link" to="/about">
+                  About Us
+                </Link>
               </li>
             </ul>
             <div className="d-flex gap-2">
-              <Link to="/login" className="btn btn-gradient px-4">Login</Link>
-              <Link to="/register" className="btn btn-outline-light px-4">Sign Up</Link>
+              <Link to="/login" className="btn btn-gradient px-4">
+                Login
+              </Link>
+              <Link to="/register" className="btn btn-outline-light px-4">
+                Sign Up
+              </Link>
             </div>
           </div>
         </div>
@@ -72,7 +107,7 @@ function LoginForm() {
           />
           <div className="mb-3">
             <Link className="text-primary" to="/register">
-              Don't have an account? Sign Up
+              Don't have an account? <b style={{textDecoration:'underline', color:'white', fontWeight:'normal'}}> Sign Up </b>
             </Link>
           </div>
           <button type="submit" style={styles.button}>
@@ -116,8 +151,9 @@ const styles = {
     backgroundSize: 'cover', // Ensure background image covers the full screen
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
+    transform: "scale (5)",
     zIndex: 0},
-    
+
   container: {
     zIndex: 1,
     width: "400px",
