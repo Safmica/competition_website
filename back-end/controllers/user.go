@@ -130,7 +130,7 @@ func Logout(c *fiber.Ctx) error {
 		Name: "token",
 		Value: "",
 		Expires: time.Now().Add(-time.Hour),
-		HTTPOnly: true,\
+		HTTPOnly: true,
 	})
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
