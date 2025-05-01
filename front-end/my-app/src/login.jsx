@@ -85,48 +85,46 @@ function LoginForm() {
 }
 
 const styles = {
-
   wrapper: {
     position: "relative",
     width: "100vw",
     height: "100vh",
     overflow: "hidden",
-  },
-
-  background: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    height: '100vw',
-    width: '100vh',
-    backgroundImage: 'url("/BG PAGE.png")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    transform: "translate(-50%, -50%) rotate(90deg)",
-    zIndex: 0,
-  },
+  }, // },
 
   // background: {
   //   position: "absolute",
-  //   top: "0",
-  //   left: "0",
-  //   height: '100vh',
-  //   width: '100vw',
+  //   top: "50%",
+  //   left: "50%",
+  //   height: '100vw',
+  //   width: '100vh',
   //   backgroundImage: 'url("/BG PAGE.png")',
-  //   backgroundSize: 'cover', // Ensure background image covers the full screen
+  //   backgroundSize: 'cover',
   //   backgroundPosition: 'center',
   //   backgroundRepeat: 'no-repeat',
+  //   transform: "translate(-50%, -50%) rotate(90deg)",
   //   zIndex: 0,
   // },
 
+  background: {
+    position: "absolute",
+    top: "0",
+    left: "0",
+    height: '100vh',
+    width: '100vw',
+    backgroundImage: 'url("/BG PAGE.png")',
+    backgroundSize: 'cover', // Ensure background image covers the full screen
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    zIndex: 0},
+    
   container: {
     zIndex: 1,
     width: "400px",
     height: "400px",
     padding: "40px",
-    border: '5px solid transparent',
-    borderImage: 'linear-gradient(to right, #A951FF, #FD4F53) 1',
+    border: "5px solid transparent",
+    borderImage: "linear-gradient(to right, #A951FF, #FD4F53) 1",
     borderRadius: "28px",
     boxShadow: "0 0 15px rgba(31, 30, 30, 0.1)",
     textAlign: "center",

@@ -124,24 +124,24 @@ const styles = {
   },
 
   background: {
-      position: "absolute",
-      top: "50%",
-      left: "50%",
-      height: '100vw',
-      width: '100vh',
-      backgroundImage: 'url("/BG PAGE.png")',
-      backgroundSize: 'cover',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      transform: "translate(-50%, -50%) rotate(90deg)",
-      zIndex: 0,
+    position: "absolute",
+    top: "0",
+    left: "0",
+    height: "100vh",
+    width: "100vw",
+    backgroundImage: 'url("/BG PAGE.png")',
+    backgroundSize: "cover", // Ensure background image covers the full screen
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+    transform: "scale (2)",
+    zIndex: 0,
   },
 
   title: {
     marginBottom: "-120px",
     fontSize: "50px",
   },
-  
+
   form: {
     marginTop: "150px",
     display: "flex",
@@ -155,7 +155,7 @@ const styles = {
     fontSize: "16px",
   },
 
-  button: { 
+  button: {
     padding: "10px",
     fontSize: "16px",
     backgroundColor: "#007bff",
