@@ -21,77 +21,13 @@ function RegisterForm() {
   };
 
   return (
-    <div className="relative w-screen h-screen text-white overflow-hidden">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top z-10">
-        <div className="container-fluid px-5">
-          <img src="/Logo.png" alt="KESEDZ" className="w-34"></img>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarNav">
-            <ul className="navbar-nav mx-auto">
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/home">
-                  Home
-                </Link>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle text-white"
-                  href="#!"
-                  id="navbarDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  Competition
-                </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <Link
-                      className="dropdown-item text-white bg-dark"
-                      to="/competition1"
-                    >
-                      Competition 1
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="dropdown-item text-white bg-dark"
-                      to="/competition2"
-                    >
-                      Competition 2
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link text-white" to="/about">
-                  About Us
-                </Link>
-              </li>
-            </ul>
-            <div className="d-flex gap-2">
-              <Link to="/login" className="btn btn-gradient px-4">
-                Login
-              </Link>
-              <Link to="/register" className="btn btn-outline-light px-4">
-                Sign Up
-              </Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div className="mt-5 relative w-screen h-screen text-white" class="bg-transparent">
 
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-cover bg-center scale-125 z-0"
-        style={{ backgroundImage: 'url("/BG PAGE.png")' }}
+        className="absolute inset-0 bg-center"
+        class="bg-contain z-10 scale-200"
+        style={{ backgroundImage: 'url("/bg.png")' }}
       ></div>
 
       {/* Form Container */}

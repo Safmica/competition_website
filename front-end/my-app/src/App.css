@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+.btn-gradient {
+  background: linear-gradient(to right, #A951FF, #FD4F53);
+  color: white;
+  border: none;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(to right, #FD4F53, #A951FF);
+  color: white;
+}
