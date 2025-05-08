@@ -17,6 +17,7 @@ function LoginForm() {
       <nav
         className="navbar navbar-expand-lg navbar-dark bg-transparent"
         style={{ zIndex: 2, position: "absolute", width: "100%" }}
+        
       >
         <div className="container-fluid px-5">
           <Link
