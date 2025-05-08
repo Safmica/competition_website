@@ -6,67 +6,110 @@ function RegisterForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleRegister = (e) => {
     e.preventDefault();
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Confirm Password:", confirmpassword);
-
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
       return;
     }
+    console.log("Name:", name);
+    console.log("Email:", email);
+    console.log("Password:", password);
+    console.log("Confirm Password:", confirmPassword);
   };
 
   return (
-    <div style={styles.wrapper}>
-          <nav className="navbar navbar-expand-lg navbar-dark bg-transparent" style={{ zIndex: 2, position: 'absolute', width: '100%' }}>
-            <div className="container-fluid px-5">
-              <Link className="navbar-brand" to="/home" style={{ fontWeight: 'bold' }}>
-                KESEDZ
-              </Link>
-              <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span className="navbar-toggler-icon"></span>
-              </button>
-              <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav mx-auto">
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/home" style={{color:'white'}}>Home</Link>
+    <div className="relative w-screen h-screen text-white overflow-hidden">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top z-10">
+        <div className="container-fluid px-5">
+          <img src="/Logo.png" alt="KESEDZ" className="w-34"></img>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav mx-auto">
+              <li className="nav-item">
+                <Link className="nav-link text-white" to="/home">
+                  Home
+                </Link>
+              </li>
+              <li className="nav-item dropdown">
+                <a
+                  className="nav-link dropdown-toggle text-white"
+                  href="#!"
+                  id="navbarDropdown"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Competition
+                </a>
+                <ul className="dropdown-menu">
+                  <li>
+                    <Link
+                      className="dropdown-item text-white bg-dark"
+                      to="/competition1"
+                    >
+                      Competition 1
+                    </Link>
                   </li>
-                  <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#!" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style={{color:'white'}}>
-                      Competition
-                    </a>
-                    <ul className="dropdown-menu">
-                      <li><Link className="dropdown-item" to="/competition1" style={{color:'white'}}>Competition 1</Link></li>
-                      <li><Link className="dropdown-item" to="/competition2" style={{color:'white'}}>Competition 2</Link></li>
-                    </ul>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/about" style={{color:'white'}}>About Us</Link>
+                  <li>
+                    <Link
+                      className="dropdown-item text-white bg-dark"
+                      to="/competition2"
+                    >
+                      Competition 2
+                    </Link>
                   </li>
                 </ul>
-                <div className="d-flex gap-2">
-                  <Link to="/login" className="btn btn-gradient px-4">Login</Link>
-                  <Link to="/register" className="btn btn-outline-light px-4">Sign Up</Link>
-                </div>
-              </div>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link text-white" to="/about">
+                  About Us
+                </Link>
+              </li>
+            </ul>
+            <div className="d-flex gap-2">
+              <Link to="/login" className="btn btn-gradient px-4">
+                Login
+              </Link>
+              <Link to="/register" className="btn btn-outline-light px-4">
+                Sign Up
+              </Link>
             </div>
-          </nav>
+          </div>
+        </div>
+      </nav>
 
-      <div style={styles.background}></div>
-      <div style={styles.container}>
-        <h2 style={styles.title}>SignUp</h2>
-        <form onSubmit={handleRegister} style={styles.form}>
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center scale-125 z-0"
+        style={{ backgroundImage: 'url("/BG PAGE.png")' }}
+      ></div>
+
+      {/* Form Container */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-80 p-10 rounded-2xl border-4 border-transparent border-gradient-to-r from-purple-500 to-red-500 shadow-lg z-10 w-[90%] max-w-md">
+        <h2 className="text-4xl font-bold text-center mb-5">
+          {" "}
+          <b className="bg-gradient-to-r from-purple-600 to-pink-500">
+            Welcome
+          </b>
+          , Join us and start your journey today
+        </h2>
+        <form onSubmit={handleRegister} className="flex flex-col gap-4">
           <input
-            type="name"
+            type="text"
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            style={styles.input}
+            className="p-3 rounded bg-black text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             required
           />
           <input
@@ -74,7 +117,7 @@ function RegisterForm() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={styles.input}
+            className="p-3 rounded bg-black text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             required
           />
           <input
@@ -82,102 +125,36 @@ function RegisterForm() {
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={styles.input}
+            className="p-3 rounded bg-black text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             required
           />
           <input
-            type="confirmpassword"
+            type="password"
             placeholder="Confirm Password"
-            value={password}
+            value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
-            style={styles.input}
+            className="p-3 rounded bg-black text-white border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             required
           />
+          <button
+            type="submit"
+            className="py-2.5 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold hover:opacity-90 transition"
+          >
+            Sign Up
+          </button>
 
-          <div className="mb-3">
-            <Link className="text-primary" to="/login">
-              Have an account? Sign In
+          <div className="text-sm text-center">
+            <Link
+              to="/login"
+              className="text-white hover:underline text-xl font-normal"
+            >
+              Have an account? <b className="text-blue-300"> Login </b>
             </Link>
           </div>
-
-          <button type="submit" style={styles.button}>
-            SignUp
-          </button>
         </form>
       </div>
     </div>
   );
-}
-
-const styles = {
-  wrapper: {
-    position: "relative",
-    width: "100vw",
-    height: "100vh",
-    overflow: "hidden",
-    color: "white",
-  },
-
-  container: {
-    zIndex: 1,
-    width: "400px",
-    height: "500px",
-    padding: "40px",
-    border: "5px solid transparent",
-    borderImage: "linear-gradient(to right, #A951FF, #FD4F53) 1",
-    borderRadius: "28px",
-    boxShadow: "0 0 15px rgba(31, 30, 30, 0.1)",
-    textAlign: "center",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    backgroundColor: "black",
-    color: "white",
-  },
-
-  background: {
-    position: "absolute",
-    top: "0",
-    left: "0",
-    height: "100vh",
-    width: "100vw",
-    backgroundImage: 'url("/BG PAGE.png")',
-    backgroundSize: "cover", // Ensure background image covers the full screen
-    backgroundPosition: "center",
-    backgroundRepeat: "no-repeat",
-    transform: "scale (2)",
-    zIndex: 0,
-  },
-
-  title: {
-    marginTop: "-20px",
-    marginBottom: "-100px",
-    fontSize: "50px",
-  },
-
-  form: {
-    marginTop: "130px",
-    display: "flex",
-    flexDirection: "column",
-    gap: "15px",
-    Height: "100px",
-  },
-
-  input: {
-    padding: "10px",
-    fontSize: "16px",
-  },
-
-  button: {
-    padding: "10px",
-    fontSize: "16px",
-    backgroundColor: "linear-gradient(to right, #A951FF, #FD4F53) ",
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-  },
 };
 
 export default RegisterForm;

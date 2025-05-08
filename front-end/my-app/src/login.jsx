@@ -17,16 +17,9 @@ function LoginForm() {
       <nav
         className="navbar navbar-expand-lg navbar-dark bg-transparent"
         style={{ zIndex: 2, position: "absolute", width: "100%" }}
-        
       >
         <div className="container-fluid px-5">
-          <Link
-            className="navbar-brand"
-            to="/home"
-            style={{ fontWeight: "bold" }}
-          >
-            KESEDZ
-          </Link>
+          <img src="/Logo.png" alt="KESEDZ" className="w-34"></img>
           <button
             className="navbar-toggler"
             type="button"
@@ -108,7 +101,17 @@ function LoginForm() {
           />
           <div className="mb-3">
             <Link className="text-primary" to="/register">
-              Don't have an account? <b style={{textDecoration:'underline', color:'white', fontWeight:'normal'}}> Sign Up </b>
+              Don't have an account?{" "}
+              <b
+                style={{
+                  textDecoration: "underline",
+                  color: "white",
+                  fontWeight: "normal",
+                }}
+              >
+                {" "}
+                Sign Up{" "}
+              </b>
             </Link>
           </div>
           <button type="submit" style={styles.button}>
