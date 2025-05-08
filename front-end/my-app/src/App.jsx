@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import React from "react";
 import RegisterForm from "./pages/register";
 import LoginForm from "./pages/login";
+import HomePage from "./pages/home";
 import MainLayout from "./layouts/indexLayout";
 import AuthLayout from "./layouts/authLayout";
 
@@ -33,6 +34,14 @@ function App() {
           </MainLayout>
         }
       />
+      <Route
+        path="/home"
+        element={
+          <MainLayout>
+            <HomePage />
+          </MainLayout>
+        }
+        />
     </Routes>
   );
 }
