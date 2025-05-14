@@ -30,7 +30,7 @@ function App() {
         path="/"
         element={
           <MainLayout>
-            <RegisterForm />
+            <HomePage />
           </MainLayout>
         }
       />
