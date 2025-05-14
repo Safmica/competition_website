@@ -5,6 +5,8 @@ import LoginForm from "./pages/login";
 import HomePage from "./pages/home";
 import MainLayout from "./layouts/indexLayout";
 import AuthLayout from "./layouts/authLayout";
+import CompetitionMobile from "./pages/compemobile";
+import PaymentPage from "./pages/payment";
 
 function App() {
   return (
@@ -29,9 +31,9 @@ function App() {
       <Route
         path="/"
         element={
-          <MainLayout>
+          <AuthLayout>
             <RegisterForm />
-          </MainLayout>
+          </AuthLayout>
         }
       />
       <Route
@@ -41,7 +43,24 @@ function App() {
             <HomePage />
           </MainLayout>
         }
-        />
+      />
+      <Route
+        path="/payment"
+        element={
+          <MainLayout>
+            <PaymentPage />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/compemobile"
+        element={
+          <MainLayout>
+            <CompetitionMobile />
+          </MainLayout>
+        }
+      />
     </Routes>
   );
 }

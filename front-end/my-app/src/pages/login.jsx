@@ -57,10 +57,10 @@ function LoginForm() {
             required
           />
 
-          <div className="text-sm justify">
-            <Link to="/register" className="text-primary ">
+          <div className="text-m text-center ">
+            <Link to="/register" className="text-primary text-white ">
               Don't have an account?
-              <b className="underline text-white font-normal"> Sign Up </b>
+              <b className="text-blue-300  font-normal"> Sign Up </b>
             </Link>
           </div>
 
