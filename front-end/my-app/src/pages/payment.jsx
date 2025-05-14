@@ -2,10 +2,13 @@ import React from "react";
 
 const PaymentPage = () => {
   return (
-    <div className="min-h-screen w-full bg-black text-white font-sans">
+    <div className="h-screen text-white bg-cover bg-center bg-fixed bg-black font-sans mt-10">
       <div className="flex flex-col lg:flex-row w-full h-full">
         {/* Left Section */}
-        <div className="w-full lg:w-1/2 p-10 flex flex-col justify-center">
+        <div className="w-full lg:w-1/2 p-10 flex flex-col justify-center"
+        cl
+        >
+          <p className="text-4xl font-bold "> Payment</p>
           <img
             src="/your-image-path.jpg"
             alt="Hackathon"
@@ -24,7 +27,7 @@ const PaymentPage = () => {
         </div>
 
         {/* Right Section */}
-        <div className="w-full lg:w-1/2 p-10">
+        <div className=" lg:w-1/2 p-5">
           <div className="bg-gray-900 border border-pink-500 rounded-lg p-6">
             <h3 className="text-lg font-semibold mb-4">Transfer to:</h3>
 
