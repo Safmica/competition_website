@@ -48,19 +48,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Buttons */}
-        <div className="space-x-4">
-          <a href="/login">
-            <button className="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded text-white hover:opacity-80 transition-opacity duration-300">
-              Login
-            </button>
-          </a>
-          <a href="/register">
-            <button className="text-white ml-2 border border-white px-4 py-2 rounded hover:bg-white hover:text-black transition-colors duration-300">
-              Sign Up
-            </button>
-          </a>
-        </div>
+        
       </div>
     </nav>
   );

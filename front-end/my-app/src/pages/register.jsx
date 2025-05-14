@@ -21,20 +21,30 @@ function RegisterForm() {
   };
 
   return (
-    <div className="mt-5 relative w-screen h-screen text-white" class="bg-transparent">
-
+    <div
+      className="mt-5 relative w-screen h-screen text-white"
+      class="bg-transparent"
+    >
       {/* Background Image */}
       <div
-        className="absolute inset-0 bg-center"
-        class="bg-contain z-10 scale-200"
+        className="w-screen h-screen text-white bg-cover bg-center bg-fixed"
         style={{ backgroundImage: 'url("/bg.png")' }}
       ></div>
 
       {/* Form Container */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black bg-opacity-80 p-10 rounded-2xl border-4 border-transparent border-gradient-to-r from-purple-500 to-red-500 shadow-lg z-10 w-[90%] max-w-md">
-        <h2 className="text-4xl font-bold text-center mb-5">
+      <div
+        className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black text-white rounded-2xl shadow-lg border-[5px] border-transparent"
+        style={{
+          borderImage: "linear-gradient(to right, #A951FF, #FD4F53) 1",
+          width: "500px",
+          height: "auto",
+          padding: "30px",
+          zIndex: 10,
+        }}
+      >
+        <h2 className="text-white text-4xl font-bold text-center mb-5">
           {" "}
-          <b className="bg-gradient-to-r from-purple-600 to-pink-500">
+          <b className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-pink-500">
             Welcome
           </b>
           , Join us and start your journey today
