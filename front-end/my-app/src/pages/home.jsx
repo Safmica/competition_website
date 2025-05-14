@@ -1,88 +1,224 @@
-import React from "react";
+import React, { useState } from "react";
 
 function HomePage () {
+  const [hoverJoin, setHoverJoin] = useState(false);
+  const [hoverContact, setHoverContact] = useState(false);
+
   return (
-    <div style={{ backgroundImage: 'url("/bg crot.png")' }} className=" text-white font-sans w-screen h-screen" >
+    <div style={{ backgroundImage: 'url("bg crot.png")' }} className=" text-white font-sans w-100% h-screen bg-cover bg-center bg-no-repeat bg-black" >
       {/* Hero Section */}
-      <section className="relative text-center py-16 "> 
-        <h1 className="text-4xl font-bold text-white mb-4">
-          Crafting the Stage for <span className="text-purple-500">Future Winners</span>
+      <section className="relative text-center py-12 "> 
+        <h1 className="text-4xl font-bold text-white mb-4 pt-11">
+          Crafting the Stage for
         </h1>
-        <p className="text-gray-400 max-w-3xl mx-auto mb-8">
-          Showcase your skills and get recognized on a national scale. Join the platform open for all innovators and creators.
+        <h1 className="text-4xl font-bold text-white mb-4">
+          <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">Future Winners</span>
+        </h1>
+        <p className="text-gray-400 max-w-3xl mx-auto mb-5 pb-3 text-xs">
+          Step into the ultimate battleground for digital innovation - where aspiring developers, creative designers, and problem-solvers from across the nation unite. From building responsive websites to crafting world-class UI/UX experiences, this is your chance to showcase your skills, challenge your limits, and shine in front of industry pros.
         </p>
-        <div className="flex justify-center gap-10 text-center mb-8">
-          <div>
-            <h2 className="text-3xl font-bold text-purple-500">500+</h2>
-            <p className="text-gray-400">Participants have joined</p>
+
+        <div className="grid grid-cols-3 mx-[100px]">
+          <div className="text-left">
+            <p className="text-2xl mb-1">SHOWCASE YOUR SKILLS</p>
+            <p className="text-2xl font-bold ">GET RECOGNIZED</p>
+            <p className="text-gray-400">Stand out from the crowd! Win prizes, earn certificates, and boost your portfolio with every competition you join</p>
           </div>
-          <div>
-            <h2 className="text-3xl font-bold text-white">National Scale Platform</h2>
-            <p className="text-gray-400">Open for all</p>
+          <div className="text-center">
+            <p className="text-3xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">500+</p>
+            <p className="text-2xl m-1">PARTICIPANTS HAVE</p>
+            <p className="text-2xl font-bold ">JOINED</p>
+          </div>
+          <div className="text-right"> 
+            <p className="text-2xl mb-1">NATIONAL-SCALE PLATFORM</p>
+            <p className="text-2xl font-bold">OPEN FOR ALL</p>
+            <p className="text-gray-400">Compete, connect, and grow with Indonesia's brightest talents through a dynamic, all-in-one competition platform.
+            </p>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-16 px-4">
-        <div className="max-w-5xl mx-auto grid gap-8 md:grid-cols-2">
-          <div>
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Empowering Innovators Through Technology Challenges
-            </h2>
-            <p className="text-gray-400 mb-6">
-              We believe in transforming tech innovation and accelerating digital skill mastery through competitive challenges.
-            </p>
-            <div className="flex gap-4">
-              <button className="bg-purple-500 px-6 py-2 rounded-md hover:bg-purple-700">Learn More</button>
-              <button className="border border-purple-500 px-6 py-2 rounded-md hover:bg-purple-500">Join Now</button>
+      <section className="bg-black py-16 px-8">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+          {/* Left Column with Gradient Bar */}
+          <div className="relative ml-8">
+            {/* Gradient Bar */}
+            <div className="absolute left-0 top-0 h-full w-2 bg-gradient-to-b from-red-500 via-pink-500 to-purple-500 rounded-full"></div>
+            
+            <div className="pl-10">
+              {/* Main Heading */}
+              <p className="text-4xl font-bold leading-tight mb-8 pb-5">
+                Empowering Innovators Through Technology Challenges
+              </p>
+              
+              {/* Description */}
+              <p className="text-gray-300 mb-12 pt-5 pb-5">
+                <span className="font-bold">KESEDZ FEST</span> is a national-scale technology competition platform that brings 
+                together aspiring developers, designers, analysts, and innovators to showcase their 
+                talents, solve real-world problems, and elevate their skills through various tech-based challenges.
+              </p>
+              
+              {/* Buttons */}
+              <div className="flex gap-4">
+                <a href="/">
+                <button 
+                  className={`px-6 py-3 rounded ${hoverJoin ? 'bg-gradient-to-r from-red-500 to-pink-500' : 'bg-red-500'} text-white font-medium transition-all duration-300`}
+                  onMouseEnter={() => setHoverJoin(true)}
+                  onMouseLeave={() => setHoverJoin(false)}
+                >
+                  Join Competition
+                </button>
+                </a>
+                <a href="/contact">
+                <button 
+                  className={`px-6 py-3 rounded ${hoverContact ? 'bg-gradient-to-r from-red-500 to-pink-500' : 'bg-red-500'} text-white font-medium transition-all duration-300`}
+                  onMouseEnter={() => setHoverContact(true)}
+                  onMouseLeave={() => setHoverContact(false)}
+                >
+                  Contact Us
+                </button>
+                </a>
+              </div>
             </div>
           </div>
-          <div className="grid gap-6">
-            <div>
-              <h3 className="text-xl font-bold text-purple-500 mb-2">01 Transforming Tech Innovation</h3>
-              <p className="text-gray-400">
-                Explore challenges designed to push the boundaries of what technology can achieve.
-              </p>
+          
+          {/* Right Column */}
+          <div className="space-y-20 ml-8">
+            {/* Section 1 */}
+            <div className="flex">
+              <div className="mr-8">
+                <span className="text-5xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">01</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold mb-4">
+                  TRANSFORMING<br />TECH INNOVATION
+                </h2>
+                <p className="text-gray-400">
+                  Our curated challenges are designed to push the boundaries of technological innovation, 
+                  providing a launchpad for emerging talent to create meaningful solutions.
+                </p>
+              </div>
             </div>
-            <div>
-              <h3 className="text-xl font-bold text-purple-500 mb-2">02 Accelerating Digital Skill Mastery</h3>
-              <p className="text-gray-400">
-                Develop your skills through hands-on problem-solving and learning.
-              </p>
+            
+            {/* Section 2 */}
+            <div className="flex">
+              <div className="mr-8">
+                <span className="text-5xl font-bold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">02</span>
+              </div>
+              <div>
+                <h2 className="text-2xl font-bold mb-4">
+                  ACCELERATING DIGITAL<br />SKILL MASTERY
+                </h2>
+                <p className="text-gray-400">
+                  We provide comprehensive learning paths and expert mentorship to transform 
+                  promising individuals into industry-leading tech professionals.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Challenges Section */}
-      <section className="bg-gray-900 py-16 px-4">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Discover the Categories & Challenges We Offer
-          </h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
-            From programming to web development and UI/UX design, we have something for everyone to showcase their skills.
+      <section className="bg-black py-20 px-8">
+  <div className="max-w-6xl mx-auto">
+    {/* Section Header */}
+    <div className="text-center mb-12">
+      <h2 className="text-5xl font-bold text-white mb-6">
+        Discover the Categories &<br />
+        Challenges We Offer
+      </h2>
+
+      <div className="mb-3">
+        <span className="text-pink-500 font-medium">Let's get started!</span>
+      </div>
+
+      <p className="text-gray-400 max-w-3xl mx-auto">
+        Select the competition that aligns with your expertise, register immediately, and demonstrate your capability to earn accolades.
+      </p>
+    </div>
+
+    {/* Cards Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Card 1: Competitive Programming */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-br from-pink-500 via-purple-500 to-purple-700 p-0.5 -z-10"></div>
+        
+        <div className="bg-black rounded-3xl h-full p-8 flex flex-col">
+          <div className="mb-6">
+            <div className="h-12 w-12 bg-gradient-to-br from-pink-500 to-pink-400 rounded flex items-center justify-center overflow-hidden">
+              <img src="/images/code.png" alt="Code Icon" className="h-8 w-8 object-contain" />
+            </div>
+          </div>
+
+          <h3 className="text-3xl font-bold text-white mb-4">Competitive Programming</h3>
+          <p className="text-gray-400 mb-8">
+            Test your algorithmic thinking and problem-solving skills in a fast-paced coding battle against the clock.
           </p>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
-          <div className="bg-gray-800 p-6 rounded-md text-center">
-            <h3 className="text-xl font-bold text-purple-500 mb-2">Competitive Programming</h3>
-            <p className="text-gray-400 mb-4">Rp100,000.00</p>
-            <button className="bg-purple-500 px-6 py-2 rounded-md hover:bg-purple-700">Register</button>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-md text-center">
-            <h3 className="text-xl font-bold text-purple-500 mb-2">Web Development</h3>
-            <p className="text-gray-400 mb-4">Rp800,000.00</p>
-            <button className="bg-purple-500 px-6 py-2 rounded-md hover:bg-purple-700">Register</button>
-          </div>
-          <div className="bg-gray-800 p-6 rounded-md text-center">
-            <h3 className="text-xl font-bold text-purple-500 mb-2">UI/UX Design</h3>
-            <p className="text-gray-400 mb-4">Rp500,000.00</p>
-            <button className="bg-purple-500 px-6 py-2 rounded-md hover:bg-purple-700">Register</button>
+
+          <div className="mt-auto">
+            <p className="text-2xl font-bold text-white mb-6">Rp100.000,00</p>
+            <button className="px-6 py-3 w-full rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium text-white">
+              Learn More
+            </button>
           </div>
         </div>
-      </section>
+      </div>
+
+      {/* Card 2: Web Development */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-br from-pink-500 via-purple-500 to-purple-700 p-0.5 -z-10"></div>
+        
+        <div className="bg-black rounded-3xl h-full p-8 flex flex-col">
+          <div className="mb-6">
+            <div className="h-12 w-12 bg-gradient-to-br from-pink-500 to-purple-400 rounded flex items-center justify-center overflow-hidden">
+              <img src="/images/web.png" alt="Web Icon" className="h-8 w-8 object-contain" />
+            </div>
+          </div>
+
+          <h3 className="text-3xl font-bold text-white mb-4">Web Development</h3>
+          <p className="text-gray-400 mb-8">
+            Showcase your coding expertise by creating innovative, responsive, and functional websites applications.
+          </p>
+
+          <div className="mt-auto">
+            <p className="text-2xl font-bold text-white mb-6">Rp80.000,00</p>
+            <button className="px-6 py-3 w-full rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium text-white">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Card 3: UI/UX Design */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-br from-pink-500 via-purple-500 to-purple-700 p-0.5 -z-10"></div>
+        
+        <div className="bg-black rounded-3xl h-full p-8 flex flex-col">
+          <div className="mb-6">
+            <div className="h-12 w-12 bg-gradient-to-br from-pink-500 to-purple-400 rounded flex items-center justify-center overflow-hidden">
+              <img src="/images/design.png" alt="Design Icon" className="h-8 w-8 object-contain" />
+            </div>
+          </div>
+
+          <h3 className="text-3xl font-bold text-white mb-4">UI/UX Design</h3>
+          <p className="text-gray-400 mb-8">
+            Design exceptional digital experiences by creating intuitive and visually appealing interfaces.
+          </p>
+
+          <div className="mt-auto">
+            <p className="text-2xl font-bold text-white mb-6">Rp80.000,00</p>
+            <button className="px-6 py-3 w-full rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium text-white">
+              Learn More
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* FAQ Section */}
       <section className="py-16 px-4">

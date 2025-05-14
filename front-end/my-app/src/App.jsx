@@ -31,9 +31,9 @@ function App() {
       <Route
         path="/"
         element={
-          <AuthLayout>
-            <RegisterForm />
-          </AuthLayout>
+          <MainLayout>
+            <HomePage />
+          </MainLayout>
         }
       />
       <Route
