@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-400 p-10 mt-10">
+    <footer className="bg-gray-900 text-gray-400 p-10 absolute">
       <div className="grid md:grid-cols-4 gap-10">
         <div>
           <h6 className="font-bold text-white mb-2">
@@ -15,29 +15,41 @@ const Footer = () => {
         </div>
         <div>
           <h6 className="font-bold text-white mb-2">Information</h6>
-          <ul className="space-y-1">
+          <ul className="space-y-1 -ml-8 ">
             <li>
-              <a href="#">Press Centre</a>
+              <a className="text-white " href="#">
+                Press Centre
+              </a>
             </li>
             <li>
-              <a href="#">Our Blog</a>
+              <a className="text-white" href="#">
+                Our Blog
+              </a>
             </li>
             <li>
-              <a href="#">Terms and Conditions</a>
+              <a className="text-white" href="#">
+                Terms and Conditions
+              </a>
             </li>
           </ul>
         </div>
         <div>
           <h6 className="font-bold text-white mb-2">Menu</h6>
-          <ul className="space-y-1">
+          <ul className="space-y-1 -ml-8 ">
             <li>
-              <a href="#">About</a>
+              <a className="text-white" href="#">
+                About
+              </a>
             </li>
             <li>
-              <a href="#">Services</a>
+              <a className="text-white" href="#">
+                Services
+              </a>
             </li>
             <li>
-              <a href="#">Blog</a>
+              <a className="text-white" href="#">
+                Blog
+              </a>
             </li>
           </ul>
         </div>
@@ -49,12 +61,14 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mt-10 border-t border-gray-700 pt-6">
-        <form className="flex items-center max-w-md mx-auto">
+      <div className="mt-10 border-t  pt-6">
+        <p className="text-center text-white font-reguler text-2xl gap-1"> Stay Information </p>
+        <p className="text-center ">Sign up for our announcement</p>
+        <form className="flex items-center max-w-md mx-auto border-purple-500">
           <input
             type="email"
             placeholder="Enter your email here"
-            className="flex-1 p-2 rounded-l-md bg-black border border-gray-700 text-white"
+            className="flex-1 p-2 rounded-l-md bg-black border  text-white"
           />
           <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-r-md">
             Subscribe

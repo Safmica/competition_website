@@ -25,16 +25,16 @@ const Navbar = () => {
               Competition
             </a>
             {/* Dropdown Menu */}
-            <div className=" text-white absolute hidden group-hover:block bg-black bg-opacity-90  shadow-lg px-5 text-left">
+            <div className=" text-white absolute hidden group-hover:block bg-black bg-opacity-90  shadow-lg px-5 text-left ">
               <a
-                href="/competition/1"
-                className="text-white block px-1 py-2  hover:bg-gray-700 hover:text-gray-300"
+                href="/compemobile"
+                className="text-white block px-1 py-2  hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap"
               >
                 Mobile Development
               </a>
               <a
                 href="/competition/2"
-                className=" text-white block px-4 py-2 hover:bg-gray-700 hover:text-gray-300"
+                className=" text-white block px-1 py-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap "
               >
                 Web Development
               </a>
