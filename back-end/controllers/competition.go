@@ -1,11 +1,13 @@
-package controllers  
+package controllers
 
-import (  
-	"github.com/gofiber/fiber/v2"  
-	"github.com/google/uuid"  
-	"back-end-competition/models"  
-	"back-end-competition/database"  
-	"time"  
+import (
+	"back-end-competition/database"
+	"back-end-competition/models"
+	"back-end-competition/utils"
+	"time"
+
+	"github.com/gofiber/fiber/v2"
+	"github.com/google/uuid"
 )  
  
 func CreateCompetition(c *fiber.Ctx) error {  
@@ -41,16 +43,31 @@ func CreateCompetition(c *fiber.Ctx) error {
 }  
 
 func GetCompetitions(c *fiber.Ctx) error {  
-	var competitions []models.Competition  
+	params := make(map[string]interface{})
+	query := c.Queries()
+	for key, value := range query {
+		if key != "page" && key != "size" {
+			params[key] = value
+		}
+	}
 
-	result := database.DB.Find(&competitions)  
-	if result.Error != nil {  
-		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{  
-			"error": "Gagal mengambil daftar kompetisi",  
-		})  
-	}  
+	pagination := utils.NewPagination()
+	stmt := database.DB.Model(&models.Competition{})
 
-	return c.Status(fiber.StatusOK).JSON(competitions)  
+	for key, value := range params {
+		stmt = stmt.Where(key+" LIKE ?", "%"+value.(string)+"%")
+	}
+
+	var competitoion []models.Competition
+	paginatedResponse := pagination.With(stmt).Request(c.Request()).Response(&competitoion)
+
+	if paginatedResponse.Error {
+		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
+			"error": paginatedResponse.ErrorMessage,
+		})
+	}
+
+	return c.JSON(paginatedResponse)
 }  
 
 func GetCompetitionByID(c *fiber.Ctx) error {  
