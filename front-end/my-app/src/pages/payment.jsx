@@ -5,30 +5,28 @@ const PaymentPage = () => {
     <div className="h-screen text-white bg-cover bg-center bg-fixed bg-black font-sans mt-10">
       <div className="flex flex-col lg:flex-row w-full h-full">
         {/* Left Section */}
-        <div className="w-full lg:w-1/2 p-10 flex flex-col justify-center"
-        cl
-        >
-          <p className="text-4xl font-bold "> Payment</p>
+        <div className="w-full lg:w-1/2 p-10 flex flex-col justify-center mb-14">
+          <p className="text-4xl font-bold mb-10"> Payment</p>
           <img
-            src="/your-image-path.jpg"
+            src="\MobDevImg.jpeg"
             alt="Hackathon"
-            className="rounded-lg shadow-lg mb-6"
+            className="rounded-lg shadow-lg mb-6 h-100 w-200 "
           />
           <h2 className="text-2xl font-semibold mb-2">
             Web Development Registration
           </h2>
-          <div className="bg-gray-900 p-4 rounded mb-4">
+          <div className="bg-gray-900 w-95 h-20 rounded mb-4">
             <p>
               Showcase your coding expertise by creating innovative, responsive,
               and functional websites applications.
             </p>
           </div>
-          <p className="text-purple-500 font-bold text-xl">Rp 80.000,00</p>
+          <p className="text-purple-500 font-bold text-xl ">Rp 80.000,00</p>
         </div>
 
         {/* Right Section */}
-        <div className=" lg:w-1/2 p-5">
-          <div className="bg-gray-900 border border-pink-500 rounded-lg p-6">
+        <div className=" lg:w-1/3.5 p-5 ml-28">
+          <div className="bg-gray-900 border border-pink-500 rounded-lg p-6 ">
             <h3 className="text-lg font-semibold mb-4">Transfer to:</h3>
 
             <div className="mb-4">
