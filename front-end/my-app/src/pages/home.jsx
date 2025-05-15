@@ -8,7 +8,7 @@ function HomePage() {
     <div className=" text-white font-arial w-full h-full z-50 bg-full bg-fixed bg-center bg-no-repeat bg-[url(bgcrop.png)]">
       {/* Hero Section */}
       <section className="relative text-center py-12 ">
-        <h1 className="text-4xl font-bold text-white mb-4 pt-11">
+        <h1 className="text-4xl font-bold text-white mb-4 pt-40">
           Crafting the Stage for
         </h1>
         <h1 className="text-4xl font-bold text-white mb-4">
@@ -16,7 +16,7 @@ function HomePage() {
             Future Winners
           </span>
         </h1>
-        <p className="text-gray-400 max-w-3xl mx-auto mb-5 pb-3 text-xs">
+        <p className="text-gray-200 max-w-3xl mx-auto mb-5 pb-3 text-xs">
           Step into the ultimate battleground for digital innovation - where
           aspiring developers, creative designers, and problem-solvers from
           across the nation unite. From building responsive websites to crafting
@@ -274,7 +274,7 @@ function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-black text-white py-16 px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+      <section className="bg-black text-white min-h-screen flex items-center justify-center">
         <div className="bg-black text-white min-h-screen flex items-center">
           <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
             <div className="flex flex-col lg:flex-row items-center gap-8">
