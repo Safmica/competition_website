@@ -9,7 +9,7 @@ export default function CompetitionWeb() {
         </button>
         <h2 className="text-4xl font-bold mb-5">Website Development</h2>
         <img
-          src="\WebDev IMG.jpg"
+          src="\WebDev img.png"
           alt="Hackathon"
           className="rounded-xl w-screen mb-10"
         />
