@@ -33,13 +33,13 @@ const Navbar = () => {
                 Mobile Development
               </a>
               <a
-                href="/competition/2"
+                href="/compeweb"
                 className=" text-white block px-1 py-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap "
               >
                 Web Development
               </a>
               <a
-                href="/competition/3"
+                href="/compeuiux"
                 className=" text-white block px-1 py-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap "
               >
                 UI/UX Design

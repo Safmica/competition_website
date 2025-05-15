@@ -108,7 +108,12 @@ func GetRegistration(c *fiber.Ctx) error {
 	userID := c.Locals("user_id")
 	registrations := []models.Registration{}
 
-	if err := database.DB.Preload("Competition").Where("leader_id = ? OR member1_id = ? OR member2_id = ?", userID, userID, userID).Find(&registrations).Error; err != nil {
+	if err := database.DB.
+		Preload("Competition").
+		Preload("Leader").
+		Preload("Member1").
+		Preload("Member2").
+		Where("leader_id = ? OR member1_id = ? OR member2_id = ?", userID, userID, userID).Find(&registrations).Error; err != nil {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
 			"message": "registrations not found",
 		})
@@ -229,16 +234,34 @@ func DeleteRegistration(c *fiber.Ctx) error {
 }
 
 func GetAllRegistrer(c *fiber.Ctx) error {
-	registers := []models.RegistrationResponse{}
-	if err := database.DB.Preload("Competition").Find(&registers).Error; err != nil {
+	params := make(map[string]interface{})
+	query := c.Queries()
+	for key, value := range query {
+		if key != "page" && key != "size" {
+			params[key] = value
+		}
+	}
+
+	pagination := utils.NewPagination()
+	stmt := database.DB.Model(&models.RegistrationResponse{}).Preload("Competition").
+		Preload("Leader").
+		Preload("Member1").
+		Preload("Member2")
+
+	for key, value := range params {
+		stmt = stmt.Where(key+" LIKE ?", "%"+value.(string)+"%")
+	}
+
+	var registration []models.RegistrationResponse
+	paginatedResponse := pagination.With(stmt).Request(c.Request()).Response(&registration)
+
+	if paginatedResponse.Error {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"message":"Internal server error",
+			"error": paginatedResponse.ErrorMessage,
 		})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"registers":registers,
-	})
+	return c.JSON(paginatedResponse)
 }
 
 
