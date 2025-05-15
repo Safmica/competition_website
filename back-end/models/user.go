@@ -19,8 +19,9 @@ type User struct {
 }
 
 type UserResponse struct {
-	ID   uuid.UUID `gorm:"type:char(36);primaryKey" json:"id"`
-	Name string    `gorm:"type:varchar(255)" json:"name"`
+	ID    uuid.UUID `gorm:"type:char(36);primaryKey" json:"id"`
+	Name  string    `gorm:"type:varchar(255)" json:"name"`
+	Email string    `gorm:"type:varchar(255);unique" json:"email"`
 }
 
 func (UserResponse) TableName() string {
