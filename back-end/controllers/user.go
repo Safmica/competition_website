@@ -154,3 +154,17 @@ func Logout(c *fiber.Ctx) error {
 		"message": "Logout Success",
 	})
 }
+
+func Me(c *fiber.Ctx) error {
+	userId := c.Locals("user_id")
+	user := models.User{}
+	if err := database.DB.Where("id = ?", userId).First(&user).Error; err != nil {
+		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
+			"message": "User not found",
+		})
+	}
+
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"user": user,
+	})
+}

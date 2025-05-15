@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navbarlog = () => {
+const NavbarLog = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-70 text-white shadow-lg z-50">
       <div className="bg-transparent container mx-auto flex items-center justify-between px-6 py-3">
