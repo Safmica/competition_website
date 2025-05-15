@@ -5,10 +5,7 @@ function HomePage() {
   const [hoverContact, setHoverContact] = useState(false);
 
   return (
-    <div
-      style={{ backgroundImage: 'url("bgcrop.png")' }}
-      className=" text-white font-arial  w-100% h-screen bg-cover bg-center bg-no-repeat bg-black"
-    >
+    <div className=" text-white font-arial w-full h-full z-50 bg-full bg-fixed bg-center bg-no-repeat bg-[url(bgcrop.png)]">
       {/* Hero Section */}
       <section className="relative text-center py-12 ">
         <h1 className="text-4xl font-bold text-white mb-4 pt-11">
@@ -447,13 +444,6 @@ function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 py-8 text-center">
-        <p className="text-gray-400">
-          Contact: techchallenges@example.com | © 2025 Tech Challenges
-        </p>
-      </footer>
     </div>
   );
 }
