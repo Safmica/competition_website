@@ -10,46 +10,46 @@ function RegisterForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleRegister = async (e) => {
-    e.preventDefault();
+  // const handleRegister = async (e) => {
+  //   e.preventDefault();
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
+  //   if (password !== confirmPassword) {
+  //     alert("Passwords do not match!");
+  //     return;
+  //   }
 
-    try {
-      setLoading(true);
+  //   try {
+  //     setLoading(true);
 
-      const params = new URLSearchParams();
-      params.append("name", name);
-      params.append("email", email);
-      params.append("password", password);
+  //     const params = new URLSearchParams();
+  //     params.append("name", name);
+  //     params.append("email", email);
+  //     params.append("password", password);
 
-      const response = await axios.post("http://localhost:8080/api/signup", params, {
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      });
+  //     const response = await axios.post("http://localhost:8080/api/signup", params, {
+  //       headers: {
+  //         "Content-Type": "application/x-www-form-urlencoded",
+  //       },
+  //     });
 
-      alert(response.data.message || "Registration successful!");
+  //     alert(response.data.message || "Registration successful!");
 
-      // Reset form after successful registration (optional)
-      setName("");
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
+  //     // Reset form after successful registration (optional)
+  //     setName("");
+  //     setEmail("");
+  //     setPassword("");
+  //     setConfirmPassword("");
 
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      if (error.response) {
-        alert(error.response.data.message || "Registration failed");
-      } else {
-        alert("Error: " + error.message);
-      }
-    }
-  };
+  //     setLoading(false);
+  //   } catch (error) {
+  //     setLoading(false);
+  //     if (error.response) {
+  //       alert(error.response.data.message || "Registration failed");
+  //     } else {
+  //       alert("Error: " + error.message);
+  //     }
+  //   }
+  // };
 
   return (
     <div
