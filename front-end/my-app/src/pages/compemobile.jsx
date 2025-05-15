@@ -28,7 +28,7 @@ export default function CompetitionMobile() {
                 real-world problems.
               </p>
 
-              <p>
+              <p className="text-gray-300">
                 Join hundreds of driven and talented individuals from diverse
                 backgrounds, all coming together with one goal: to build the
                 next great mobile application. Seize this chance to innovate,
@@ -96,7 +96,7 @@ export default function CompetitionMobile() {
                 <li>✅ Top teams featured on web</li>
                 <li>✅ Exposure to tech companies</li>
               </ul>
-              <a href="/payment">
+              <a href="/paymentMob">
                 <button className="mt-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white w-full py-2 rounded-full font-semibold text-center">
                   Regist
                 </button>
