@@ -6,11 +6,11 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func CompetitionRoutes(app *fiber.App) {
-	app.Post("/competition", controllers.CreateCompetition)
-	app.Get("/competition", controllers.GetCompetitions)
-	app.Get("/competition/:id", controllers.GetCompetitionByID)
-	app.Put("/competition/:id", controllers.UpdateCompetition)
-	app.Delete("/competition/:id", controllers.DeleteCompetition)
+func CompetitionRoutes(route fiber.Router) {
+	route.Post("/competition", controllers.CreateCompetition)
+	route.Get("/competition", controllers.GetCompetitions)
+	route.Get("/competition/:id", controllers.GetCompetitionByID)
+	route.Put("/competition/:id", controllers.UpdateCompetition)
+	route.Delete("/competition/:id", controllers.DeleteCompetition)
 	
 }
