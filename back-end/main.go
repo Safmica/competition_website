@@ -16,12 +16,14 @@ func main() {
 	database.DBMigration()
 	app := fiber.New()
 	app.Use(cors.New(cors.Config{
-		AllowOrigins: "*", 
-		AllowHeaders: "Origin, Content-Type, Accept",
+		AllowOrigins: "http://localhost:5173/",
+		AllowMethods: "GET,POST,PUT,DELETE,OPTIONS",
+		AllowHeaders: "Origin, Content-Type, Accept, Authorization",
+		AllowCredentials: true,
 	}))
 
 	routes.SetupRoutes(app)
 
 	port := os.Getenv("SERVER_PORT")
-	app.Listen(":"+port)
+	app.Listen(":" + port)
 }
