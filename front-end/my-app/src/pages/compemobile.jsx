@@ -96,7 +96,7 @@ export default function CompetitionMobile() {
                 <li>✅ Top teams featured on web</li>
                 <li>✅ Exposure to tech companies</li>
               </ul>
-              <a href="/paymentMob">
+              <a href="/payment">
                 <button className="mt-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white w-full py-2 rounded-full font-semibold text-center">
                   Regist
                 </button>

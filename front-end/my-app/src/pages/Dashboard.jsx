@@ -1,19 +1,57 @@
+import React, { useEffect, useState } from "react";
+import api from "../api/axioos";
+import { useNavigate } from "react-router-dom";
+
 export default function Dashboard() {
+  const [registrations, setRegistrations] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const backendBaseURL = "http://localhost:8080";
+
+  function getFullAssetUrl(path) {
+    if (!path) return ""; // kalau path kosong
+    if (path.startsWith("http")) return path; // sudah URL lengkap
+
+    // buang titik di depan kalau ada (contoh: './assets/xxx.png' jadi '/assets/xxx.png')
+    const fixedPath = path.startsWith("./") ? path.slice(1) : path;
+
+    return backendBaseURL + fixedPath;
+  }
+
+  useEffect(() => {
+    api
+      .get("/registration/registered")
+      .then((res) => {
+        setRegistrations(res.data.items); // ambil dari items
+      })
+      .catch((err) => {
+        if (err.response?.status === 403) {
+          setError("Access denied. Admin only.");
+          navigate("/login");
+        } else {
+          setError("Failed to load data.");
+        }
+      })
+      .finally(() => setLoading(false));
+  }, [navigate]);
+
+  if (loading) return <div className="text-white p-4">Loading...</div>;
+  if (error) return <div className="text-red-500 p-4">{error}</div>;
+
   return (
     <div className="min-h-screen bg-black text-white">
       <div
-        className="w-full h-screen text-white bg-cover bg-center bg-fixed"
+        className="w-full h-full text-white bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: 'url("/BG Dashboard.png")',
         }}
       >
-        <main className=" pt-20 w-full px-6 mx-auto py-8">
+        <main className="pt-20 w-full px-6 mx-auto py-8">
           <div className="px-5 pt-4 flex items-center gap-3 mb-6">
-            <div className="w-8 h-8  rounded-md flex items-center justify-center">
-              <img
-                src="\manufacturing.png"
-                className="w-10 h-8 mb-3 "
-              ></img>
+            <div className="w-8 h-8 rounded-md flex items-center justify-center">
+              <img src="/manufacturing.png" className="w-10 h-8 mb-3" alt="" />
             </div>
             <p className="text-4xl font-semibold tracking-wide">Dashboard</p>
           </div>
@@ -26,88 +64,68 @@ export default function Dashboard() {
               </h5>
             </div>
 
-            <div className="flex justify-between items-center mb-6">
-              <div className="flex items-center gap-2 text-sm text-white">
-                <span>Show</span>
-                <select className="bg-transparent border border-gray-700/50 rounded px-2 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-purple-500">
-                  <option>10</option>
-                  <option>25</option>
-                  <option>50</option>
-                </select>
-                <span>Entries</span>
-              </div>
-              <div className="flex items-center gap-2 text-sm text-white">
-                <span>Search:</span>
-                <input
-                  type="search"
-                  className="bg-transparent border rounded border-gray-700/50 w-[250px] text-sm px-2 py-1 focus:outline-none focus:ring-1 focus:ring-purple-500"
-                  placeholder="Search..."
-                />
-              </div>
-            </div>
-
             <div className="overflow-x-auto">
-              <table className="w-full">
+              <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-gray-800/30">
-                    <th className="text-left p-4 text-sm font-medium text-gray-white">
-                      ID Regist
-                    </th>
-                    <th className="text-left p-4 text-sm font-medium text-gray-white">
-                      Team Name
-                    </th>
-                    <th className="text-left p-4 text-sm font-medium text-gray-white">
-                      Leader
-                    </th>
-                    <th className="text-left p-4 text-sm font-medium text-gray-white">
-                      Member1
-                    </th>
-                    <th className="text-left p-4 text-sm font-medium text-gray-white">
-                      Member2
-                    </th>
-                    <th className="text-left p-4 text-sm font-medium text-gray-white">
-                      Competition
-                    </th>
-                    <th className="text-left p-4 text-sm font-medium text-gray-white">
-                      Payment Proof
-                    </th>
-                    <th className="text-left p-4 text-sm font-medium text-gray-white">
-                      Verify
-                    </th>
+                    <th className="text-left p-4 font-medium">ID Regist</th>
+                    <th className="text-left p-4 font-medium">Team Name</th>
+                    <th className="text-left p-4 font-medium">Leader</th>
+                    <th className="text-left p-4 font-medium">Member1</th>
+                    <th className="text-left p-4 font-medium">Member2</th>
+                    <th className="text-left p-4 font-medium">Competition</th>
+                    <th className="text-left p-4 font-medium">Payment Proof</th>
+                    <th className="text-left p-4 font-medium">Verify</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-gray-800/30">
-                    <td className="p-4"></td>
-                    <td className="p-4"></td>
-                    <td className="p-4"></td>
-                    <td className="p-4"></td>
-                    <td className="p-4"></td>
-                    <td className="p-4"></td>
-                    <td className="p-4">
-                      <button className="text-xs px-4 py-1 rounded bg-white/5 hover:bg-white/10">
-                        View
-                      </button>
-                    </td>
-                    <td className="p-4">
-                      <div className="flex gap-2">
-                        <button className="px-4 py-1 rounded bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm">
-                          ✕
-                        </button>
-                        <button className="px-4 py-1 rounded bg-green-500/20 hover:bg-green-500/30 text-green-500 text-sm">
-                          ✓
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                  {registrations.length === 0 ? (
+                    <tr>
+                      <td colSpan="8" className="text-center p-4 text-gray-500">
+                        No registrations found.
+                      </td>
+                    </tr>
+                  ) : (
+                    registrations.map((regist, idx) => (
+                      <tr
+                        key={idx}
+                        className="border-b border-gray-800/30 hover:bg-white/5"
+                      >
+                        <td className="p-4">{regist.id}</td>
+                        <td className="p-4">{regist.team_name}</td>
+                        <td className="p-4">{regist.leader.name}</td>
+                        <td className="p-4">{regist.member_1.name}</td>
+                        <td className="p-4">{regist.member_2.name}</td>
+                        <td className="p-4">{regist.competition.title}</td>
+                        <td className="p-4">
+                          <a
+                            href={getFullAssetUrl(regist.payment_proof)}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="text-xs px-4 py-1 rounded bg-white/5 hover:bg-white/10"
+                          >
+                            View
+                          </a>
+                        </td>
+                        <td className="p-4">
+                          <div className="flex gap-2">
+                            <button className="px-4 py-1 rounded bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm">
+                              ✕
+                            </button>
+                            <button className="px-4 py-1 rounded bg-green-500/20 hover:bg-green-500/30 text-green-500 text-sm">
+                              ✓
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
           </div>
         </main>
       </div>
-
-      {/* Main Content */}
     </div>
   );
 }

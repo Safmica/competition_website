@@ -22,6 +22,7 @@ func main() {
 		AllowCredentials: true,
 	}))
 
+	app.Static("/assets", "./assets")
 	routes.SetupRoutes(app)
 
 	port := os.Getenv("SERVER_PORT")
