@@ -18,7 +18,7 @@ func Signup(c *fiber.Ctx) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 
-	if name == "" || password == "" || email == ""{
+	if name == "" || password == "" || email == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "Username and password are required",
 		})
@@ -64,7 +64,7 @@ func Login(c *fiber.Ctx) error {
 	email := c.FormValue("email")
 	password := c.FormValue("password")
 
-	if password == "" || email == ""{
+	if password == "" || email == "" {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"message": "Username and password are required",
 		})
@@ -85,7 +85,7 @@ func Login(c *fiber.Ctx) error {
 
 	claims := jwt.MapClaims{
 		"user_id": user.ID,
-		"role": user.Role,
+		"role":    user.Role,
 		"exp":     time.Now().Add(time.Hour * 24).Unix(),
 	}
 
@@ -104,7 +104,6 @@ func Login(c *fiber.Ctx) error {
 		Expires:  time.Now().Add(24 * time.Hour),
 		HTTPOnly: true,
 	})
-	
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
 		"user":  user,
@@ -116,20 +115,20 @@ func GetAllUser(c *fiber.Ctx) error {
 	users := []models.UserResponse{}
 	if err := database.DB.Where("role != ?", "admin").Find(&users).Error; err != nil {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"message":"Internal server error",
+			"message": "Internal server error",
 		})
 	}
 
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"users":users,
+		"users": users,
 	})
 }
 
 func Logout(c *fiber.Ctx) error {
 	c.Cookie(&fiber.Cookie{
-		Name: "token",
-		Value: "",
-		Expires: time.Now().Add(-time.Hour),
+		Name:     "token",
+		Value:    "",
+		Expires:  time.Now().Add(-time.Hour),
 		HTTPOnly: true,
 	})
 
