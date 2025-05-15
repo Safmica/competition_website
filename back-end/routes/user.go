@@ -7,9 +7,9 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func UserRoutes(app *fiber.App) {
-	app.Post("/signup", controllers.Signup)
-	app.Post("/login", controllers.Login)
-	app.Post("/logout", controllers.Logout)
-	app.Get("/user", middlewares.Auth(), controllers.GetAllUser)
+func UserRoutes(route fiber.Router) {
+	route.Post("/signup", controllers.Signup)
+	route.Post("/login", controllers.Login)
+	route.Post("/logout", controllers.Logout)
+	route.Get("/users", middlewares.Auth(), controllers.GetAllUser)
 }

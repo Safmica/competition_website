@@ -2,30 +2,33 @@ import React from "react";
 
 const PaymentPage = () => {
   return (
-    <div className="min-h-screen w-full bg-black text-white font-sans">
+    <div className="h-screen text-white bg-cover bg-center bg-fixed bg-black font-sans mt-10">
       <div className="flex flex-col lg:flex-row w-full h-full">
         {/* Left Section */}
-        <div className="w-full lg:w-1/2 p-10 flex flex-col justify-center">
+        <div className="w-full lg:w-1/2 p-10 flex flex-col justify-center mb-14 ml-5">
+          <p className="text-4xl font-bold mb-10"> Payment</p>
           <img
-            src="/your-image-path.jpg"
+            src="\MobDevImg.jpeg"
             alt="Hackathon"
-            className="rounded-lg shadow-lg mb-6"
+            className="rounded-lg shadow-lg mb-6 h-100 w-200 "
           />
           <h2 className="text-2xl font-semibold mb-2">
             Web Development Registration
           </h2>
-          <div className="bg-gray-900 p-4 rounded mb-4">
-            <p>
+          <div className="bg-gray-900 w-95 h-20 rounded mb-4">
+            <p className="ml-2 text-">
               Showcase your coding expertise by creating innovative, responsive,
               and functional websites applications.
             </p>
           </div>
-          <p className="text-purple-500 font-bold text-xl">Rp 80.000,00</p>
+          <p className="bg-gradient-to-r from-[#A951FF] to-[#FD4F53] bg-clip-text text-transparent font-bold text-4xl ">
+            Rp 80.000,00
+          </p>
         </div>
 
         {/* Right Section */}
-        <div className="w-full lg:w-1/2 p-10">
-          <div className="bg-gray-900 border border-pink-500 rounded-lg p-6">
+        <div className=" lg:w-1/3.5 p-5 ml-28 mr-4 mt-9">
+          <div className="bg-gray-900 border border-pink-500 rounded-lg p-6 ">
             <h3 className="text-lg font-semibold mb-4">Transfer to:</h3>
 
             <div className="mb-4">
@@ -68,7 +71,7 @@ const PaymentPage = () => {
               <input type="file" className="form-control" />
               <div className="bg-green-600 text-white px-2 py-1 text-sm rounded">
                 60%
-              </div>
+              </div>  
             </div>
 
             <button className="w-full text-white py-2 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 font-semibold">

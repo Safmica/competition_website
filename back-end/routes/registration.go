@@ -7,11 +7,11 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func RegistrationRoutes(app *fiber.App) {
-	app.Post("/registration", middlewares.Auth(), controllers.CreateRegistration)
-	app.Patch("/registration/:id", middlewares.Auth(), controllers.UpdateRegistration)
-	app.Get("/registration", middlewares.Auth(), controllers.GetRegistration)
-	app.Patch("/registration/:id", middlewares.Auth(), controllers.DeleteRegistration)
-	app.Patch("/registration/payment/:id", middlewares.AuthAdmin(), controllers.ApprovedPayment)
-	app.Get("/registration/registered", middlewares.AuthAdmin(), controllers.GetAllRegistrer)
+func RegistrationRoutes(route fiber.Router) {
+	route.Post("/registration", middlewares.Auth(), controllers.CreateRegistration)
+	route.Patch("/registration/:id", middlewares.Auth(), controllers.UpdateRegistration)
+	route.Get("/registration", middlewares.Auth(), controllers.GetRegistration)
+	route.Patch("/registration/:id", middlewares.Auth(), controllers.DeleteRegistration)
+	route.Patch("/registration/payment/:id", middlewares.AuthAdmin(), controllers.ApprovedPayment)
+	route.Get("/registration/registered", middlewares.AuthAdmin(), controllers.GetAllRegistrer)
 }
