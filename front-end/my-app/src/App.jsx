@@ -7,6 +7,7 @@ import MainLayout from "./layouts/indexLayout";
 import AuthLayout from "./layouts/authLayout";
 import CompetitionMobile from "./pages/compemobile";
 import PaymentPage from "./pages/payment";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -58,6 +59,15 @@ function App() {
         element={
           <MainLayout>
             <CompetitionMobile />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/Dashboard"
+        element={
+          <MainLayout>
+            <Dashboard />
           </MainLayout>
         }
       />

@@ -3,6 +3,7 @@ package controllers
 import (
 	"back-end-competition/database"
 	"back-end-competition/models"
+	"back-end-competition/utils"
 	"os"
 	"time"
 
@@ -112,16 +113,33 @@ func Login(c *fiber.Ctx) error {
 }
 
 func GetAllUser(c *fiber.Ctx) error {
-	users := []models.UserResponse{}
-	if err := database.DB.Where("role != ?", "admin").Find(&users).Error; err != nil {
+	params := make(map[string]interface{})
+	query := c.Queries()
+	for key, value := range query {
+		if key != "page" && key != "size" {
+			params[key] = value
+		}
+	}
+
+	pagination := utils.NewPagination()
+	stmt := database.DB.Model(&models.UserResponse{})
+
+	for key, value := range params {
+		stmt = stmt.Where(key+" LIKE ?", "%"+value.(string)+"%")
+	}
+
+	stmt = stmt.Where("role != ?", "admin")
+
+	var user []models.UserResponse
+	paginatedResponse := pagination.With(stmt).Request(c.Request()).Response(&user)
+
+	if paginatedResponse.Error {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{
-			"message": "Internal server error",
+			"error": paginatedResponse.ErrorMessage,
 		})
 	}
 
-	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"users": users,
-	})
+	return c.JSON(paginatedResponse)
 }
 
 func Logout(c *fiber.Ctx) error {

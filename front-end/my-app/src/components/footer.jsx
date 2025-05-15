@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-400 p-10 absolute">
+    <footer className="relative bg-gray-900 text-gray-400 p-10 w-full">
       <div className="grid md:grid-cols-4 gap-10">
         <div>
           <h6 className="font-bold text-white mb-2">
@@ -62,18 +62,23 @@ const Footer = () => {
       </div>
 
       <div className="mt-10 border-t  pt-6">
-        <p className="text-center text-white font-reguler text-2xl gap-1"> Stay Information </p>
+        <p className="text-center text-white font-reguler text-2xl gap-1">
+          {" "}
+          Stay Information{" "}
+        </p>
         <p className="text-center ">Sign up for our announcement</p>
-        <form className="flex items-center max-w-md mx-auto border-purple-500">
-          <input
-            type="email"
-            placeholder="Enter your email here"
-            className="flex-1 p-2 rounded-l-md bg-black border  text-white"
-          />
-          <button className="bg-pink-500 hover:bg-pink-600 text-white px-4 py-2 rounded-r-md">
-            Subscribe
-          </button>
-        </form>
+        <div class="flex items-center justify-center scale-80">
+          <div class="flex w-full max-w-xl overflow-hidden rounded-full border-2 border-transparent bg-black bg-clip-padding p-[2px] bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500">
+            <input
+              type="email"
+              placeholder="Enter Your Email Here"
+              class="flex-grow rounded-full px-5 py-3 text-white bg-black text-sm placeholder-gray-400 outline-none border-none"
+            />
+            <button class="ml-2 rounded-full bg-transparent px-6 py-3 text-sm font-semibold text-white hover:opacity-90 transition ">
+              Subscribe
+            </button>
+          </div>
+        </div>
       </div>
     </footer>
   );

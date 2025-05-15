@@ -121,8 +121,6 @@ export default function CompetitionMobile() {
           </div>
         </div>
       </main>
-
-      
     </div>
   );
 }
