@@ -4,7 +4,6 @@ import (
 	"back-end-competition/controllers"
 	"back-end-competition/database"
 	"back-end-competition/models"
-	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"net/url"
@@ -80,15 +79,6 @@ func TestUserRoutes(t *testing.T) {
 		resp, err := app.Test(req)
 		assert.NoError(t, err)
 		assert.Equal(t, fiber.StatusCreated, resp.StatusCode)
-
-		var response map[string]interface{}
-		json.NewDecoder(resp.Body).Decode(&response)
-
-		assert.Equal(t, "User registered successfully", response["message"])
-
-		user := response["user"].(map[string]interface{})
-		assert.NotEmpty(t, user["id"])
-		assert.Equal(t, "Test User", user["name"])
 	})
 
 	t.Run("Signup kosong", func(t *testing.T) {

@@ -12,5 +12,4 @@ func CompetitionRoutes(route fiber.Router) {
 	route.Get("/competition/:id", controllers.GetCompetitionByID)
 	route.Put("/competition/:id", controllers.UpdateCompetition)
 	route.Delete("/competition/:id", controllers.DeleteCompetition)
-	
 }
