@@ -4,9 +4,9 @@ import RegisterForm from "./pages/register";
 import LoginForm from "./pages/login";
 import HomePage from "./pages/home";
 import MainLayout from "./layouts/indexLayout";
+import MainAuthLayout from "./layouts/indexAuthLayout";
 import AuthLayout from "./layouts/authLayout";
 import CompetitionMobile from "./pages/compemobile";
-import PaymentPage from "./pages/paymentMob";
 import Dashboard from "./pages/Dashboard";
 import AboutUs from "./pages/AboutUs";
 import CompetitionWeb from "./pages/compeweb";
@@ -44,38 +44,13 @@ function App() {
           </MainLayout>
         }
       />
+
       <Route
-        path="/home"
+        path="/payment"
         element={
-          <MainLayout>
-            <HomePage />
-          </MainLayout>
-        }
-      />
-      <Route
-        path="/paymentMob"
-        element={
-          <MainLayout>
+          <MainAuthLayout>
             <PaymentPage />
-          </MainLayout>
-        }
-      />
-
-      <Route
-        path="/paymentWeb"
-        element={
-          <MainLayout>
-            <PaymentWeb />
-          </MainLayout>
-        }
-      />
-
-      <Route
-        path="/paymentUIUX"
-        element={
-          <MainLayout>
-            <PaymentUIUX />
-          </MainLayout>
+          </MainAuthLayout>
         }
       />
 
@@ -89,7 +64,7 @@ function App() {
       />
 
       <Route
-        path="/Dashboard"
+        path="/dashboard"
         element={
           <MainLayout>
             <Dashboard />
@@ -114,9 +89,9 @@ function App() {
           </MainLayout>
         }
       />
-      
+
       <Route
-        path="/AboutUs"
+        path="/aboutUs"
         element={
           <MainLayout>
             <AboutUs />
@@ -134,10 +109,6 @@ function App() {
       />
 
     </Routes>
-
-    
-
-    
   );
 }
 

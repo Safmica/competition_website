@@ -58,8 +58,8 @@ func GetCompetitions(c *fiber.Ctx) error {
 		stmt = stmt.Where(key+" LIKE ?", "%"+value.(string)+"%")
 	}
 
-	var competitoion []models.Competition
-	paginatedResponse := pagination.With(stmt).Request(c.Request()).Response(&competitoion)
+	var competition []models.Competition
+	paginatedResponse := pagination.With(stmt).Request(c.Request()).Response(&competition)
 
 	if paginatedResponse.Error {
 		return c.Status(fiber.StatusInternalServerError).JSON(fiber.Map{

@@ -114,7 +114,7 @@ export default function CompetitionUIUX() {
                 <li>✅ Top teams featured on web</li>
                 <li>✅ Exposure to tech companies</li>
               </ul>
-              <a href="/paymentUIUX">
+              <a href="/payment">
                 <button className="mt-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white w-full py-2 rounded-full font-semibold text-center">
                   Regist
                 </button>

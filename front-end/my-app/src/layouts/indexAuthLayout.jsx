@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; 
 import Navbar from "../components/navbar";
 import NavbarLog from "../components/navbarlogin";
 import api from "../api/axioos";
 import Footer from "../components/footer";
 
-function MainLayout({ children }) {
+function MainAuthLayout({ children }) {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
-    api.get("/me")
-      .then(res => {
+    api
+      .get("/me")
+      .then((res) => {
         if (res.data.user) {
           setIsLoggedIn(true);
         } else {
@@ -21,15 +24,21 @@ function MainLayout({ children }) {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  useEffect(() => {
+    if (!loading && !isLoggedIn) {
+      navigate("/login");
+    }
+  }, [loading, isLoggedIn, navigate]);
+
+  if (loading) return <div className="text-white mt-10">Loading...</div>;
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-400">
       {isLoggedIn ? <NavbarLog /> : <Navbar />}
       <div>{children}</div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
 
-export default MainLayout;
+export default MainAuthLayout;

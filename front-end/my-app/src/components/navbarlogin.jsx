@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navbarlog = () => {
+const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-70 text-white shadow-lg z-50">
       <div className="bg-transparent container mx-auto flex items-center justify-between px-6 py-3">
@@ -25,33 +25,37 @@ const Navbarlog = () => {
               Competition
             </a>
             {/* Dropdown Menu */}
-            <div className=" text-white absolute hidden group-hover:block bg-black bg-opacity-90 mt-2 rounded shadow-lg py-3">
+            <div className=" text-white absolute hidden group-hover:block bg-black bg-opacity-90  shadow-lg px-5 text-left ">
               <a
-                href="/competition/1"
-                className="text-white block px-4 py-3  hover:bg-gray-700 hover:text-gray-300"
+                href="/compemobile"
+                className="text-white block px-1 py-2  hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap"
               >
-                Competition 1
+                Mobile Development
               </a>
               <a
-                href="/competition/2"
-                className=" text-white block px-4 py-2 hover:bg-gray-700 hover:text-gray-300"
+                href="/compeweb"
+                className=" text-white block px-1 py-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap "
               >
-                Competition 2
+                Web Development
+              </a>
+              <a
+                href="/compeuiux"
+                className=" text-white block px-1 py-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap "
+              >
+                UI/UX Design
               </a>
             </div>
           </div>
           <a
-            href="/about"
+            href="/AboutUs"
             className="text-white hover:text-gray-300 transition-colors duration-300"
           >
             About Us
           </a>
         </div>
-
-        
       </div>
     </nav>
   );
 };
 
-export default NavbarLog;
+export default Navbar;
