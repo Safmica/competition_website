@@ -22,32 +22,15 @@ import (
 )
 
 func TestRegistrationRoutes(t *testing.T) {
-	// Mulai transaksi database dan rollback setelah selesai
 	tx := database.DB.Begin()
 	defer tx.Rollback()
 
-	// Buat aplikasi Fiber untuk pengujian
+	competition := models.Competition{}
+	database.DB.First(&competition)
+	user := models.User{}
+	database.DB.First(&user)
 	app := fiber.New()
 
-	// Buat pengguna untuk otentikasi
-	user := models.User{
-		ID:    uuid.New(),
-		Email: "testuser@example.com",
-		Role:  "user",
-	}
-	if err := tx.Create(&user).Error; err != nil {
-		t.Fatalf("Failed to create test user: %v", err)
-	}
-
-	// Buat kompetisi untuk pengujian
-	competition := models.Competition{
-		ID: uuid.New(),
-	}
-	if err := tx.Create(&competition).Error; err != nil {
-		t.Fatalf("Failed to create test competition: %v", err)
-	}
-
-	// Buat token JWT untuk otentikasi
 	claims := jwt.MapClaims{
 		"user_id": user.ID.String(),
 		"role":    user.Role,
@@ -59,7 +42,6 @@ func TestRegistrationRoutes(t *testing.T) {
 		t.Fatalf("Failed to sign token: %v", err)
 	}
 
-	// Daftarkan rute dengan transaksi database
 	app.Post("/api/registrations", func(c *fiber.Ctx) error {
 		oldDB := database.DB
 		database.DB = tx
@@ -104,7 +86,6 @@ func TestRegistrationRoutes(t *testing.T) {
 		return controllers.ApprovedPayment(c)
 	})
 
-	// Tes: CreateRegistration Valid
 	t.Run("CreateRegistration Valid", func(t *testing.T) {
 		body := &bytes.Buffer{}
 		writer := multipart.NewWriter(body)
