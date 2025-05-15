@@ -25,10 +25,10 @@ const Navbar = () => {
               Competition
             </a>
             {/* Dropdown Menu */}
-            <div className=" text-white absolute hidden group-hover:block bg-white bg-opacity-90 shadow-lg px-5 text-left ">
+            <div className=" text-white absolute hidden group-hover:block bg-black bg-opacity-90  shadow-lg px-5 text-left ">
               <a
                 href="/compemobile"
-                className="text-white px-10 w-full block py-2 hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap"
+                className="text-white block px-1 py-2  hover:bg-gradient-to-r from-purple-500 to-pink-500 hover:text-gray-300 -ml-5 whitespace-nowrap"
               >
                 Mobile Development
               </a>
@@ -71,3 +71,5 @@ const Navbar = () => {
     </nav>
   );
 };
+
+export default Navbar;
