@@ -6,8 +6,14 @@ import HomePage from "./pages/home";
 import MainLayout from "./layouts/indexLayout";
 import AuthLayout from "./layouts/authLayout";
 import CompetitionMobile from "./pages/compemobile";
-import PaymentPage from "./pages/payment";
+import PaymentPage from "./pages/paymentMob";
 import Dashboard from "./pages/Dashboard";
+import AboutUs from "./pages/AboutUs";
+import CompetitionWeb from "./pages/compeweb";
+import CompetitionUIUX from "./pages/compeuiux";
+import PaymentUIUX from "./pages/paymentUIUX";
+import PaymentWeb from "./pages/paymentWeb";
+
 
 function App() {
   return (
@@ -46,10 +52,28 @@ function App() {
         }
       />
       <Route
-        path="/payment"
+        path="/paymentMob"
         element={
           <MainLayout>
             <PaymentPage />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/paymentWeb"
+        element={
+          <MainLayout>
+            <PaymentWeb />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/paymentUIUX"
+        element={
+          <MainLayout>
+            <PaymentUIUX />
           </MainLayout>
         }
       />
@@ -71,7 +95,27 @@ function App() {
           </MainLayout>
         }
       />
+
+      <Route
+        path="/compeweb"
+        element={
+          <MainLayout>
+            <CompetitionWeb />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/compeuiux"
+        element={
+          <MainLayout>
+            <CompetitionUIUX />
+          </MainLayout>
+        }
+      />
     </Routes>
+
+    
   );
 }
 

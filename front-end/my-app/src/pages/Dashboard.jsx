@@ -2,13 +2,13 @@ export default function Dashboard() {
   return (
     <div className="min-h-screen bg-black text-white">
       <div
-        className="w-screen h-screen text-white bg-cover bg-center bg-fixed"
+        className="w-full h-screen text-white bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: 'url("/BG Dashboard.png")',
         }}
       >
         <main className=" pt-20 w-full px-6 mx-auto py-8">
-          <div className="flex items-center gap-3 mb-12">
+          <div className="px-5 pt-4 flex items-center gap-3 mb-6">
             <div className="w-8 h-8  rounded-md flex items-center justify-center">
               <img
                 src="\manufacturing.png"
@@ -19,7 +19,7 @@ export default function Dashboard() {
           </div>
 
           {/* Registration Table */}
-          <div className="bg-[#111] rounded-xl p-6 border border-gray-800/30">
+          <div className="bg-[#111] rounded-xl mx-10 p-6 border border-gray-800/30">
             <div className="bg-gradient-to-r from-purple-600 to-pink-500 inline-block px-4 py-2 rounded-md mb-6">
               <h5 className="text-white font-medium text-center text-sm">
                 Registration Table Data
@@ -40,7 +40,7 @@ export default function Dashboard() {
                 <span>Search:</span>
                 <input
                   type="search"
-                  className="bg-transparent border border-gray-700/50 w-[250px] text-sm px-2 py-1 focus:outline-none focus:ring-1 focus:ring-purple-500"
+                  className="bg-transparent border rounded border-gray-700/50 w-[250px] text-sm px-2 py-1 focus:outline-none focus:ring-1 focus:ring-purple-500"
                   placeholder="Search..."
                 />
               </div>

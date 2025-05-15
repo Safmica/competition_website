@@ -8,7 +8,7 @@ function HomePage() {
     <div className=" text-white font-arial w-full h-full z-50 bg-full bg-fixed bg-center bg-no-repeat bg-[url(bgcrop.png)]">
       {/* Hero Section */}
       <section className="relative text-center py-12 ">
-        <h1 className="text-4xl font-bold text-white mb-4 pt-11">
+        <h1 className="text-4xl font-bold text-white mb-4 pt-40">
           Crafting the Stage for
         </h1>
         <h1 className="text-4xl font-bold text-white mb-4">
@@ -16,7 +16,7 @@ function HomePage() {
             Future Winners
           </span>
         </h1>
-        <p className="text-gray-400 max-w-3xl mx-auto mb-5 pb-3 text-xs">
+        <p className="text-gray-200 max-w-3xl mx-auto mb-5 pb-3 text-xs">
           Step into the ultimate battleground for digital innovation - where
           aspiring developers, creative designers, and problem-solvers from
           across the nation unite. From building responsive websites to crafting
@@ -182,7 +182,7 @@ function HomePage() {
                 </div>
 
                 <h3 className="text-3xl font-bold text-white mb-4">
-                  Competitive Programming
+                  Mobile Apps Development
                 </h3>
                 <p className="text-gray-400 mb-8">
                   Test your algorithmic thinking and problem-solving skills in a
@@ -190,10 +190,10 @@ function HomePage() {
                 </p>
 
                 <div className="mt-auto">
-                  <p className="text-2xl font-bold text-white mb-6">
-                    Rp100.000,00
+                  <p className="text-2xl font-bold text-white mb-6 bg-gradient-to-r from-[#FD4F53] to-[#A951FF] bg-clip-text text-transparent">
+                    Rp80.000,00
                   </p>
-                  <a href="/competition1">
+                  <a href="/compemobile">
                     <button className="px-6 py-3 w-full rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium text-white">
                       Learn More
                     </button>
@@ -227,7 +227,7 @@ function HomePage() {
                   <p className="text-2xl font-bold text-white mb-6">
                     Rp80.000,00
                   </p>
-                  <a href="/competition2">
+                  <a href="/compeweb">
                     <button className="px-6 py-3 w-full rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium text-white">
                       Learn More
                     </button>
@@ -261,7 +261,7 @@ function HomePage() {
                   <p className="text-2xl font-bold text-white mb-6">
                     Rp80.000,00
                   </p>
-                  <a href="/competition3">
+                  <a href="/compeuiux">
                     <button className="px-6 py-3 w-full rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 font-medium text-white">
                       Learn More
                     </button>
@@ -274,7 +274,7 @@ function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-black text-white py-16 px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+      <section className="bg-black text-white min-h-screen flex items-center justify-center">
         <div className="bg-black text-white min-h-screen flex items-center">
           <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
             <div className="flex flex-col lg:flex-row items-center gap-8">

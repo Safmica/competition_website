@@ -1,16 +1,36 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+// import api from "../api/axioos"; // Import axios instance
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
-  };
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
+
+  //   try {
+  //     setLoading(true);
+
+  //     const response = await api.post("/login", { email, password });
+
+  //     alert(response.data.message || "Login successful!");
+  //     setLoading(false);
+
+  //     // Redirect ke halaman lain setelah login (opsional)
+  //     // window.location.href = "/dashboard";
+  //   } catch (error) {
+  //     setLoading(false);
+  //     if (error.response) {
+  //       alert(error.response.data.message || "Login failed");
+  //     } else {
+  //       alert("Error: " + error.message);
+  //     }
+  //   }
+  // };
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
@@ -57,18 +77,19 @@ function LoginForm() {
             required
           />
 
-          <div className="text-m text-center ">
-            <Link to="/register" className="text-primary text-white ">
+          <div className="text-m text-center">
+            <Link to="/register" className="text-primary text-white">
               Don't have an account?
-              <b className="text-blue-300  font-normal"> Sign Up </b>
+              <b className="text-blue-300 font-normal"> Sign Up </b>
             </Link>
           </div>
 
           <button
             type="submit"
-            className="py-2.5 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold hover:opacity-90 transition"
+            disabled={loading}
+            className="py-2.5 px-6 rounded-full bg-gradient-to-r from-purple-600 to-pink-500 text-white font-semibold hover:opacity-90 transition disabled:opacity-50"
           >
-            Login
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
       </div>
