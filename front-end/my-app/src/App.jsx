@@ -6,14 +6,14 @@ import HomePage from "./pages/home";
 import MainLayout from "./layouts/indexLayout";
 import AuthLayout from "./layouts/authLayout";
 import CompetitionMobile from "./pages/compemobile";
-import PaymentPage from "./pages/paymentMob";
+// import PaymentPage from "./pages/paymentMob";
 import Dashboard from "./pages/Dashboard";
 import AboutUs from "./pages/AboutUs";
 import CompetitionWeb from "./pages/compeweb";
 import CompetitionUIUX from "./pages/compeuiux";
 import PaymentUIUX from "./pages/paymentUIUX";
 import PaymentWeb from "./pages/paymentWeb";
-
+import PaymentPage from "./pages/paymentPages";
 
 function App() {
   return (
@@ -79,6 +79,15 @@ function App() {
       />
 
       <Route
+        path="/payment"
+        element={
+          <MainLayout>
+            <PaymentPage />
+          </MainLayout>
+        }
+      />
+
+      <Route
         path="/compemobile"
         element={
           <MainLayout>
@@ -113,7 +122,7 @@ function App() {
           </MainLayout>
         }
       />
-      
+
       <Route
         path="/AboutUs"
         element={
@@ -122,12 +131,7 @@ function App() {
           </MainLayout>
         }
       />
-
     </Routes>
-
-    
-
-    
   );
 }
 
