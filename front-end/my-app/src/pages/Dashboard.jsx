@@ -11,12 +11,9 @@ export default function Dashboard() {
   const backendBaseURL = "http://localhost:8080";
 
   function getFullAssetUrl(path) {
-    if (!path) return ""; // kalau path kosong
-    if (path.startsWith("http")) return path; // sudah URL lengkap
-
-    // buang titik di depan kalau ada (contoh: './assets/xxx.png' jadi '/assets/xxx.png')
+    if (!path) return "";
+    if (path.startsWith("http")) return path;
     const fixedPath = path.startsWith("./") ? path.slice(1) : path;
-
     return backendBaseURL + fixedPath;
   }
 
@@ -24,7 +21,7 @@ export default function Dashboard() {
     api
       .get("/registration/registered")
       .then((res) => {
-        setRegistrations(res.data.items); // ambil dari items
+        setRegistrations(res.data.items);
       })
       .catch((err) => {
         if (err.response?.status === 403) {
@@ -36,6 +33,24 @@ export default function Dashboard() {
       })
       .finally(() => setLoading(false));
   }, [navigate]);
+
+  // Handler untuk update status pembayaran
+  const updatePaymentStatus = async (id, status) => {
+    try {
+      await api.patch(`/registration/payment/${id}`, {
+        payment_status: status,
+      });
+      // update local state biar UI langsung update
+      setRegistrations((prev) =>
+        prev.map((reg) =>
+          reg.id === id ? { ...reg, payment_status: status } : reg
+        )
+      );
+    } catch (error) {
+      console.error("Failed to update payment status", error);
+      alert("Failed to update payment status");
+    }
+  };
 
   if (loading) return <div className="text-white p-4">Loading...</div>;
   if (error) return <div className="text-red-500 p-4">{error}</div>;
@@ -56,7 +71,6 @@ export default function Dashboard() {
             <p className="text-4xl font-semibold tracking-wide">Dashboard</p>
           </div>
 
-          {/* Registration Table */}
           <div className="bg-[#111] rounded-xl mx-10 p-6 border border-gray-800/30">
             <div className="bg-gradient-to-r from-purple-600 to-pink-500 inline-block px-4 py-2 rounded-md mb-6">
               <h5 className="text-white font-medium text-center text-sm">
@@ -75,13 +89,14 @@ export default function Dashboard() {
                     <th className="text-left p-4 font-medium">Member2</th>
                     <th className="text-left p-4 font-medium">Competition</th>
                     <th className="text-left p-4 font-medium">Payment Proof</th>
+                    <th className="text-left p-4 font-medium">Payment Status</th>
                     <th className="text-left p-4 font-medium">Verify</th>
                   </tr>
                 </thead>
                 <tbody>
                   {registrations.length === 0 ? (
                     <tr>
-                      <td colSpan="8" className="text-center p-4 text-gray-500">
+                      <td colSpan="9" className="text-center p-4 text-gray-500">
                         No registrations found.
                       </td>
                     </tr>
@@ -107,12 +122,23 @@ export default function Dashboard() {
                             View
                           </a>
                         </td>
+                        <td className="p-4">{regist.payment_status}</td>
                         <td className="p-4">
                           <div className="flex gap-2">
-                            <button className="px-4 py-1 rounded bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm">
+                            <button
+                              onClick={() =>
+                                updatePaymentStatus(regist.id, "rejected")
+                              }
+                              className="px-4 py-1 rounded bg-red-500/20 hover:bg-red-500/30 text-red-500 text-sm"
+                            >
                               ✕
                             </button>
-                            <button className="px-4 py-1 rounded bg-green-500/20 hover:bg-green-500/30 text-green-500 text-sm">
+                            <button
+                              onClick={() =>
+                                updatePaymentStatus(regist.id, "approved")
+                              }
+                              className="px-4 py-1 rounded bg-green-500/20 hover:bg-green-500/30 text-green-500 text-sm"
+                            >
                               ✓
                             </button>
                           </div>
