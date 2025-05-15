@@ -47,7 +47,7 @@ const Navbar = () => {
             </div>
           </div>
           <a
-            href="/about"
+            href="/AboutUs"
             className="text-white hover:text-gray-300 transition-colors duration-300"
           >
             About Us
