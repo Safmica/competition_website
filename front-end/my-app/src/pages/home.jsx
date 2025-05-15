@@ -274,7 +274,7 @@ function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-black text-white py-16 px-8 flex flex-col lg:flex-row items-center justify-between gap-12">
+      <section className="bg-black text-white min-h-screen flex items-center justify-center">
         <div className="bg-black text-white min-h-screen flex items-center">
           <div className="container mx-auto flex flex-col lg:flex-row items-center gap-12">
             <div className="flex flex-col lg:flex-row items-center gap-8">
