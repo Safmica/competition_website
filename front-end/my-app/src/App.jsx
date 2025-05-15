@@ -11,8 +11,7 @@ import Dashboard from "./pages/Dashboard";
 import AboutUs from "./pages/AboutUs";
 import CompetitionWeb from "./pages/compeweb";
 import CompetitionUIUX from "./pages/compeuiux";
-import PaymentUIUX from "./pages/paymentUIUX";
-import PaymentWeb from "./pages/paymentWeb";
+import PaymentPage from "./pages/paymentPages";
 import UserDashboard from "./pages/userDashboard";
 
 

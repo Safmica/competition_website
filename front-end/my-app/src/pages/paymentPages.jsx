@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import api from "../api/axioos";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 
 const PaymentPage = () => {
+    const navigate = useNavigate();
   const [teamName, setTeamName] = useState("");
   const [competitions, setCompetitions] = useState([]);
   const [selectedCompetition, setSelectedCompetition] = useState(null);
@@ -86,31 +90,42 @@ const PaymentPage = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!user || !selectedCompetition) {
-      alert("User atau kompetisi tidak ditemukan.");
-      return;
-    }
+  if (!user || !selectedCompetition) {
+    Swal.fire("Error", "User atau kompetisi tidak ditemukan.", "error");
+    return;
+  }
 
-    const formData = new FormData();
-    formData.append("competition_id", selectedCompetition.id);
-    formData.append("team_name", teamName);
-    formData.append("leader_id", user.id);
-    formData.append("member1_id", member1ID);
-    formData.append("member2_id", member2ID);
-    formData.append("payment_prove", paymentProof);
+  const formData = new FormData();
+  formData.append("competition_id", selectedCompetition.id);
+  formData.append("team_name", teamName);
+  formData.append("leader_id", user.id);
+  formData.append("member1_id", member1ID);
+  formData.append("member2_id", member2ID);
+  formData.append("payment_prove", paymentProof);
 
-    try {
-      await api.post("/registration", formData, {
-        headers: { "Content-Type": "multipart/form-data" },
-      });
-      alert("Registration successful!");
-    } catch {
-      alert("Failed to register.");
-    }
-  };
+  try {
+    await api.post("/registration", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    Swal.fire({
+      title: "Berhasil!",
+      text: "Pendaftaran berhasil dilakukan.",
+      icon: "success",
+      confirmButtonText: "Ke Dashboard",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        navigate("/dashboard"); // ubah sesuai dengan rute dashboard kamu
+      }
+    });
+  } catch (error) {
+    Swal.fire("Gagal", "Terjadi kesalahan saat mendaftar.", error);
+  }
+};
+
 
   if (loading) return <div className="text-white mt-10">Loading...</div>;
   if (!selectedCompetition)
