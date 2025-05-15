@@ -2,35 +2,35 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import api from "../api/axioos"; // Import axios instance
+// import api from "../api/axioos"; // Import axios instance
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+  // const handleLogin = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      setLoading(true);
+  //   try {
+  //     setLoading(true);
 
-      const response = await api.post("/login", { email, password });
+  //     const response = await api.post("/login", { email, password });
 
-      alert(response.data.message || "Login successful!");
-      setLoading(false);
+  //     alert(response.data.message || "Login successful!");
+  //     setLoading(false);
 
-      // Redirect ke halaman lain setelah login (opsional)
-      // window.location.href = "/dashboard";
-    } catch (error) {
-      setLoading(false);
-      if (error.response) {
-        alert(error.response.data.message || "Login failed");
-      } else {
-        alert("Error: " + error.message);
-      }
-    }
-  };
+  //     // Redirect ke halaman lain setelah login (opsional)
+  //     // window.location.href = "/dashboard";
+  //   } catch (error) {
+  //     setLoading(false);
+  //     if (error.response) {
+  //       alert(error.response.data.message || "Login failed");
+  //     } else {
+  //       alert("Error: " + error.message);
+  //     }
+  //   }
+  // };
 
   return (
     <div className="relative w-screen h-screen overflow-hidden">
