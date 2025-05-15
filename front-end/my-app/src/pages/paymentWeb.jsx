@@ -27,7 +27,7 @@ const PaymentWeb = () => {
         </div>
 
         {/* Right Section */}
-        <div className=" lg:w-1/3.5 p-5 ml-28 mr-4 mt-7">
+        <div className=" lg:w-1/3.5 p-5 ml-28 mr-4 mb-8">
           <div className="bg-gray-900 border border-pink-500 rounded-lg p-6 ">
             <h3 className="text-lg font-semibold mb-4">Transfer to:</h3>
 
