@@ -113,7 +113,19 @@ function App() {
           </MainLayout>
         }
       />
+      
+      <Route
+        path="/AboutUs"
+        element={
+          <MainLayout>
+            <AboutUs />
+          </MainLayout>
+        }
+      />
+
     </Routes>
+
+    
 
     
   );

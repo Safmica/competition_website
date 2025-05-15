@@ -94,6 +94,7 @@ export default function AboutUs() {
             </div>
           </div>
         </main>
+        
       </div>
     </div>
 
