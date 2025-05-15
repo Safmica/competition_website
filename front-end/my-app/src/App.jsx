@@ -13,6 +13,7 @@ import CompetitionWeb from "./pages/compeweb";
 import CompetitionUIUX from "./pages/compeuiux";
 import PaymentUIUX from "./pages/paymentUIUX";
 import PaymentWeb from "./pages/paymentWeb";
+import UserDashboard from "./pages/userDashboard";
 
 
 function App() {
@@ -119,6 +120,15 @@ function App() {
         element={
           <MainLayout>
             <AboutUs />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/userDashboard"
+        element={
+          <MainLayout>
+            <UserDashboard />
           </MainLayout>
         }
       />
