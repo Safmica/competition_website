@@ -8,6 +8,7 @@ import AuthLayout from "./layouts/authLayout";
 import CompetitionMobile from "./pages/compemobile";
 import PaymentPage from "./pages/payment";
 import Dashboard from "./pages/Dashboard";
+import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
@@ -68,6 +69,15 @@ function App() {
         element={
           <MainLayout>
             <Dashboard />
+          </MainLayout>
+        }
+      />
+
+      <Route
+        path="/AboutUs"
+        element={
+          <MainLayout>
+            <AboutUs />
           </MainLayout>
         }
       />

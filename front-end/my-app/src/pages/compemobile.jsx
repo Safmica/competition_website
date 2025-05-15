@@ -16,7 +16,7 @@ export default function CompetitionMobile() {
 
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
-            <section className="bg-gray-900 p-6 rounded-xl ">
+            <section className="bg-[#111] p-6 rounded-xl ">
               <h3 className="text-xl font-semibold mb-4 ">Overview</h3>
               <p className="text-gray-300 mb-6 ">
                 Are you ready to bring your app idea to life? The Mobile Apps
@@ -84,7 +84,7 @@ export default function CompetitionMobile() {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-gray-900 text-white rounded-xl p-6 border-[3px] border-purple-400 w-90 ">
+            <div className="bg-[#111] text-white rounded-xl p-6 border-[3px] border-purple-400 w-90 ">
               <h2 className="text-2xl font-bold text-pink-300 mb-4">
                 Rp 80.000,00
               </h2>
@@ -103,7 +103,7 @@ export default function CompetitionMobile() {
               </a>
             </div>
 
-            <div className="bg-gray-900 p-6 rounded-xl text-sm w-90">
+            <div className="bg-[#111] p-6 rounded-xl text-sm w-90">
               <h5 className="font-semibold text-white mb-2">
                 More Information
               </h5>
