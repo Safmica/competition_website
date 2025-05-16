@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 import Navbar from "../components/navbar";
-import NavbarLog from "../components/navbarlogin";
+import NavbarUserLogin from "../components/navUserlogin";
 import api from "../api/axioos";
 import Footer from "../components/footer";
 
@@ -34,7 +34,7 @@ function MainAuthLayout({ children }) {
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-900 text-gray-400">
-      {isLoggedIn ? <NavbarLog /> : <Navbar />}
+      {isLoggedIn ? <navUserLogin /> : <Navbar />}
       <div>{children}</div>
       <Footer />
     </div>

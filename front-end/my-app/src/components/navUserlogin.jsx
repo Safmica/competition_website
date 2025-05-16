@@ -1,6 +1,6 @@
 import React from "react";
 
-const Navbar = () => {
+const NavbarUserLogin = () => {
   return (
     <nav className="fixed top-0 left-0 w-full bg-black bg-opacity-70 text-white shadow-lg z-50">
       <div className="bg-transparent container mx-auto flex items-center justify-between px-6 py-3">
@@ -53,9 +53,21 @@ const Navbar = () => {
             About Us
           </a>
         </div>
+        <div className="space-x-4">
+          <a href="/userDashboard">
+            <button className="bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 rounded text-white hover:opacity-80 transition-opacity duration-300">
+              Dashboard
+            </button>
+          </a>
+          <a href="/login">
+            <button className="text-white ml-2 border border-white px-4 py-2 rounded bg-red-600 ">
+              LOGOUT
+            </button>
+          </a>
+        </div>
       </div>
     </nav>
   );
 };
 
-export default Navbar;
+export default NavbarUserLogin;
