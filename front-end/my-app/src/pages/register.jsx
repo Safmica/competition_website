@@ -65,7 +65,7 @@ const handleRegister = async (e) => {
 
   return (
     <div
-      className="mt-5 relative w-screen h-screen text-white bg-transparent"
+      className="relative w-screen h-screen text-white bg-transparent"
     >
       {/* Background Image */}
       <div
